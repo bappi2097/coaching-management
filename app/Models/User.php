@@ -18,8 +18,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'uid',
+        'first_name',
+        'last_name',
         'email',
+        'image',
+        'status',
         'password',
     ];
 
@@ -41,4 +45,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * relation with guardian
+     *
+     * @return \App\Models\Guardian
+     */
+    public function guardian()
+    {
+        return $this->hasOne(Guardian::class, 'user_id', 'id');
+    }
+
+    /**
+     * many to many relation with course
+     * 
+     * @return \App\Models\Course.
+     */
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, "course_user")->withPivot(['status']);
+    }
+
+    /**
+     * one to many relation with Result
+     * 
+     * @param \App\Models\Result
+     */
+    public function results()
+    {
+        return $this->hasMany(Result::class, "exam_id", 'id');
+    }
 }

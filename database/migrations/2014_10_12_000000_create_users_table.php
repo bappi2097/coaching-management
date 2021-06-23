@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('uid')->autoIncrement()->from(10000);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('image')->nullable();
+            $table->enum('status', ['active', 'deactive', 'complete', 'rejected'])->default('active');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
