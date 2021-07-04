@@ -2,12 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Guardian extends Model
+class Guardian extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, HasRoles;
+
+    /**
+     * The attribute for multi guard auth.
+     *
+     * @var string
+     */
+    protected $guard = 'guardian';
 
     /**
      * The attributes that are mass assignable.

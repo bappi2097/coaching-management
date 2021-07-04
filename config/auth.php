@@ -46,6 +46,10 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'guardian' => [
+            'driver' => 'session',
+            'provider' => 'guardians',
+        ],
     ],
 
     /*
@@ -69,6 +73,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'guardians' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
         ],
 
         // 'users' => [
@@ -98,6 +106,11 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'guardians' => [
+            'provider' => 'guardians',
+            'table' => 'password_resets',
+            'expire' => 15,
         ],
     ],
 
