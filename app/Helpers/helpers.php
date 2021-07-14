@@ -11,14 +11,32 @@ function isPageRTL()
     return app()->getLocale() == "ar" ? true : false;
 }
 
-function active($route, $text = "active")
-{
-    return request()->route()->getName() == $route ? $text : '';
+/**
+ * active
+ *
+ * @param  string $route
+ * @param  string $text
+ * @return string
+ */
+if (!function_exists('active')) {
+    function active($route, $text = "active"): string
+    {
+        return request()->route()->getName() == $route ? $text : '';
+    }
 }
 
-function set_active($path, $active = 'active')
-{
-    return call_user_func_array('Request::is', (array)$path) ? $active : '';
+/**
+ * set_active
+ *
+ * @param  string $path
+ * @param  string $active
+ * @return string
+ */
+if (!function_exists('set_active')) {
+    function set_active($path, $active = 'active'): string
+    {
+        return call_user_func_array('Request::is', (array)$path) ? $active : '';
+    }
 }
 
 /**
@@ -28,11 +46,13 @@ function set_active($path, $active = 'active')
  * @param  string $message
  * @return array
  */
-function notification($alert_type, $message): array
-{
-    $notification['alert-type'] = $alert_type;
-    $notification['message'] = $message;
-    return $notification;
+if (!function_exists("notification")) {
+    function notification($alert_type, $message): array
+    {
+        $notification['alert-type'] = $alert_type;
+        $notification['message'] = $message;
+        return $notification;
+    }
 }
 
 function dashboardURL()
@@ -53,12 +73,14 @@ function dashboardURL()
  * @param  int|array $data2
  * @return string 'selected'|''
  */
-function selected($data1, $data2): string
-{
-    if (!is_array($data2)) {
-        return $data1 == $data2 ? 'selected' : '';
-    } else {
-        return in_array($data1, $data2) ? 'selected' : '';
+if (!function_exists('selected')) {
+    function selected($data1, $data2): string
+    {
+        if (!is_array($data2)) {
+            return $data1 == $data2 ? 'selected' : '';
+        } else {
+            return in_array($data1, $data2) ? 'selected' : '';
+        }
     }
 }
 
