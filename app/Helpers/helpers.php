@@ -106,7 +106,22 @@ function time_elapsed_string($datetime, $full = false): string
  * @param  string $path
  * @return string
  */
-function dashboard_asset($path = ''): string
-{
-    return asset('') . "dashboard/" . $path;
+if (!function_exists("dashboard_asset")) {
+    function dashboard_asset($path = ''): string
+    {
+        return asset('') . "dashboard/" . $path;
+    }
+}
+
+/**
+ * landing_asset
+ *
+ * @param  string $path
+ * @return string
+ */
+if (!function_exists("landing_asset")) {
+    function landing_asset($path = ''): string
+    {
+        return asset('') . "landing/" . $path;
+    }
 }
