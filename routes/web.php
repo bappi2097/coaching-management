@@ -17,10 +17,22 @@ Route::get('/', function () {
     return view('landing.master');
 });
 
-Route::get('dashboard', function () {
+Route::get('/admin', function () {
     return view('admin.home');
 });
 
-Auth::routes();
+// Route::get('login', function () {
+//     return view('admin.auth.login');
+// });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('register', function () {
+//     return view('admin.auth.register');
+// });
+
+// Route::get('password', function () {
+//     return view('admin.auth.forget');
+// });
+
+Auth::routes(["verify" => true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware("verified");

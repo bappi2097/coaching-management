@@ -1,4 +1,4 @@
-<nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+<nav id="navbar-main" class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Search form -->
@@ -51,7 +51,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-auto">
                                         <!-- Avatar -->
-                                        <img alt="Image placeholder" src="{{dashboard_asset('img/theme/team-1.jpg')}}"
+                                        <img alt="Image placeholder" src="{{ dashboard_asset('img/theme/team-1.jpg') }}"
                                             class="avatar rounded-circle">
                                     </div>
                                     <div class="col ml--2">
@@ -71,7 +71,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-auto">
                                         <!-- Avatar -->
-                                        <img alt="Image placeholder" src="{{dashboard_asset('img/theme/team-2.jpg')}}"
+                                        <img alt="Image placeholder" src="{{ dashboard_asset('img/theme/team-2.jpg') }}"
                                             class="avatar rounded-circle">
                                     </div>
                                     <div class="col ml--2">
@@ -91,7 +91,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-auto">
                                         <!-- Avatar -->
-                                        <img alt="Image placeholder" src="{{dashboard_asset('img/theme/team-3.jpg')}}"
+                                        <img alt="Image placeholder" src="{{ dashboard_asset('img/theme/team-3.jpg') }}"
                                             class="avatar rounded-circle">
                                     </div>
                                     <div class="col ml--2">
@@ -111,7 +111,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-auto">
                                         <!-- Avatar -->
-                                        <img alt="Image placeholder" src="{{dashboard_asset('img/theme/team-4.jpg')}}"
+                                        <img alt="Image placeholder" src="{{ dashboard_asset('img/theme/team-4.jpg') }}"
                                             class="avatar rounded-circle">
                                     </div>
                                     <div class="col ml--2">
@@ -131,7 +131,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-auto">
                                         <!-- Avatar -->
-                                        <img alt="Image placeholder" src="{{dashboard_asset('img/theme/team-5.jpg')}}"
+                                        <img alt="Image placeholder" src="{{ dashboard_asset('img/theme/team-5.jpg') }}"
                                             class="avatar rounded-circle">
                                     </div>
                                     <div class="col ml--2">
@@ -206,7 +206,7 @@
                         aria-expanded="false">
                         <div class="media align-items-center">
                             <span class="avatar avatar-sm rounded-circle">
-                                <img alt="Image placeholder" src="{{dashboard_asset('img/theme/team-4.jpg')}}">
+                                <img alt="Image placeholder" src="{{ dashboard_asset('img/theme/team-4.jpg') }}">
                             </span>
                             <div class="media-body  ml-2  d-none d-lg-block">
                                 <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
