@@ -48,10 +48,10 @@
                     <li><a href="#faq">FAQ</a></li>
                     <li><a href="#contact">Contact</a></li>
                     @auth
-                        <li class="get-started"><a href="{{ route('auth.login') }}">Sign In</a></li>
+                        <li class="get-started"><a href="{{ dashboardURL() }}">Dashboard</a></li>
                     @endauth
                     @guest
-                        <li class="get-started"><a href="{{ dashboardURL() }}">Dashboard</a></li>
+                        <li class="get-started"><a href="{{ route('login') }}">Sign In</a></li>
                     @endguest
                 </ul>
             </nav><!-- .nav-menu -->
@@ -70,7 +70,7 @@
                         Bootstrap</h2>
                     @guest
                         <div data-aos="fade-up" data-aos-delay="800">
-                            <a href="{{ route('auth.login') }}" class="btn-get-started scrollto">Sign In</a>
+                            <a href="{{ route('login') }}" class="btn-get-started scrollto">Sign In</a>
                         </div>
                     @endguest
                 </div>

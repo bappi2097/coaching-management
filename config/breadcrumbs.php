@@ -25,7 +25,7 @@ return [
     |
     */
 
-    'view' => 'admin.layouts.partials.breadcrumb',
+    'view' => 'layouts.breadcrumb',
 
     /*
     |--------------------------------------------------------------------------

@@ -16,11 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('landing.master');
 });
-
 Route::group([], function () {
     Route::get("login", [\App\Http\Controllers\Auth\LoginController::class, "showLoginForm"])->name("login");
     Route::post("login", [\App\Http\Controllers\Auth\LoginController::class, "login"]);
-    Route::get('logout', [\App\Http\Controllers\Auth\LoginController::class, "logout"]);
+    Route::post('logout', [\App\Http\Controllers\Auth\LoginController::class, "logout"])->middleware('auth');
     Route::group(["prefix" => "password", "as" => "password."], function () {
         Route::get("reset", [\App\Http\Controllers\Auth\ForgotPasswordController::class, "showLinkRequestForm"])->name("request");
         Route::post("email", [\App\Http\Controllers\Auth\ForgotPasswordController::class, "sendResetLinkEmail"])->name("email");
@@ -33,7 +32,10 @@ Route::group([], function () {
 /*                                Officer Route                               */
 /* -------------------------------------------------------------------------- */
 Route::group(["prefix" => "officer", "as" => "officer.", "middleware" => ["auth", "role:officer"]], function () {
-    // 
+    Route::get('dashboard', [\App\Http\Controllers\Officer\DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/profile', [\App\Http\Controllers\Officer\ProfileController::class, 'profile'])->name('profile');
+    Route::post('/update-profile', [\App\Http\Controllers\Officer\ProfileController::class, 'updateProfile'])->name('update-profile');
+    Route::post('/update-password', [\App\Http\Controllers\Officer\ProfileController::class, 'updatePassword'])->name('update-password');
 });
 
 /* -------------------------------------------------------------------------- */

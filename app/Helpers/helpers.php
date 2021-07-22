@@ -65,13 +65,13 @@ if (!function_exists("dashboardURL")) {
     function dashboardURL(): string
     {
         if (auth()->check()) {
-            if (auth()->user()->hasRole('admin')) {
-                return route('admin.dashboard');
+            if (auth()->user()->hasRole('officer')) {
+                return route('officer.dashboard');
             } else {
-                return route('home');
+                return "/";
             }
         }
-        return "#";
+        return "/";
     }
 }
 
@@ -154,5 +154,33 @@ if (!function_exists("landing_asset")) {
     function landing_asset($path = ''): string
     {
         return asset('') . "landing/" . $path;
+    }
+}
+
+if (!function_exists("currentUser")) {
+    function currentUser()
+    {
+        $guards = array_keys(config("auth.guards"));
+        foreach ($guards as $guard) {
+            if (auth()->guard($guard)->check()) {
+                return auth()->guard($guard)->user();
+            }
+        }
+        return null;
+    }
+}
+
+/**
+ * roleText
+ *
+ * @return string
+ */
+if (!function_exists('roleText')) {
+    function roleText(): string
+    {
+        if (auth()->check()) {
+            $role = ucwords(join(' ', auth()->user()->getRoleNames()->all()));
+            return $role;
+        }
     }
 }

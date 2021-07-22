@@ -51,7 +51,8 @@
                                 <div class="row align-items-center">
                                     <div class="col-auto">
                                         <!-- Avatar -->
-                                        <img alt="Image placeholder" src="{{ dashboard_asset('img/theme/team-1.jpg') }}"
+                                        <img alt="Image placeholder"
+                                            src="{{ dashboard_asset('img/theme/team-1.jpg') }}"
                                             class="avatar rounded-circle">
                                     </div>
                                     <div class="col ml--2">
@@ -71,7 +72,8 @@
                                 <div class="row align-items-center">
                                     <div class="col-auto">
                                         <!-- Avatar -->
-                                        <img alt="Image placeholder" src="{{ dashboard_asset('img/theme/team-2.jpg') }}"
+                                        <img alt="Image placeholder"
+                                            src="{{ dashboard_asset('img/theme/team-2.jpg') }}"
                                             class="avatar rounded-circle">
                                     </div>
                                     <div class="col ml--2">
@@ -91,7 +93,8 @@
                                 <div class="row align-items-center">
                                     <div class="col-auto">
                                         <!-- Avatar -->
-                                        <img alt="Image placeholder" src="{{ dashboard_asset('img/theme/team-3.jpg') }}"
+                                        <img alt="Image placeholder"
+                                            src="{{ dashboard_asset('img/theme/team-3.jpg') }}"
                                             class="avatar rounded-circle">
                                     </div>
                                     <div class="col ml--2">
@@ -111,7 +114,8 @@
                                 <div class="row align-items-center">
                                     <div class="col-auto">
                                         <!-- Avatar -->
-                                        <img alt="Image placeholder" src="{{ dashboard_asset('img/theme/team-4.jpg') }}"
+                                        <img alt="Image placeholder"
+                                            src="{{ dashboard_asset('img/theme/team-4.jpg') }}"
                                             class="avatar rounded-circle">
                                     </div>
                                     <div class="col ml--2">
@@ -131,7 +135,8 @@
                                 <div class="row align-items-center">
                                     <div class="col-auto">
                                         <!-- Avatar -->
-                                        <img alt="Image placeholder" src="{{ dashboard_asset('img/theme/team-5.jpg') }}"
+                                        <img alt="Image placeholder"
+                                            src="{{ dashboard_asset('img/theme/team-5.jpg') }}"
                                             class="avatar rounded-circle">
                                     </div>
                                     <div class="col ml--2">
@@ -206,10 +211,12 @@
                         aria-expanded="false">
                         <div class="media align-items-center">
                             <span class="avatar avatar-sm rounded-circle">
-                                <img alt="Image placeholder" src="{{ dashboard_asset('img/theme/team-4.jpg') }}">
+                                <img alt="Image placeholder"
+                                    src="{{ dashboard_asset(empty($user->image) ? 'img/theme/team-1.jpg' : $user->image) }}">
                             </span>
                             <div class="media-body  ml-2  d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                                <span
+                                    class="mb-0 text-sm  font-weight-bold">{{ $user->first_name . ' ' . $user->last_name }}</span>
                             </div>
                         </div>
                     </a>
