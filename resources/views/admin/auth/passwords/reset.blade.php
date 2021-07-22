@@ -1,4 +1,4 @@
-@extends("admin.layouts.master")
+@extends('admin.layouts.master')
 @section('sidebar')
     <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
         <div class="container">
@@ -22,14 +22,11 @@
     </nav>
 @endsection
 @section('app')
-    <div class="header bg-gradient-primary py-6 py-lg-6 pt-lg-6">
+    <!-- Header -->
+    <div class="header bg-gradient-primary py-5 py-lg-5 pt-lg-7">
         <div class="container">
             <div class="header-body text-center mb-7">
-                <div class="row justify-content-center">
-                    <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-                        <h1 class="text-white">Welcome!</h1>
-                    </div>
-                </div>
+                <div class="row justify-content-center"> </div>
             </div>
         </div>
         <div class="separator separator-bottom separator-skew zindex-100">
@@ -41,55 +38,57 @@
     </div>
     <!-- Page content -->
     <div class="container mt--8 pb-5">
+        <!-- Table -->
         <div class="row justify-content-center">
-            <div class="col-lg-5 col-md-7">
-                <div class="card bg-secondary border-0 mb-0">
+            <div class="col-lg-6 col-md-8">
+                <div class="card bg-secondary border-0">
+                    <div class="card-header bg-transparent pb-2">
+                        <div class="text-muted text-center mt-2"><small>Reset Password</small></div>
+                    </div>
                     <div class="card-body px-lg-5 py-lg-5">
-                        <div class="text-center text-muted mb-4">
-                            <small>Or sign in with credentials</small>
-                        </div>
-                        <form method="POST" action="{{ url('login') }}" role="form">
+                        <form role="form" method="POST" action="{{ route('password.update') }}">
                             @csrf
+                            <input type="hidden" name="token" value="{{ $token }}">
                             <div class="form-group mb-3 @error('email') has-danger @enderror">
                                 <div class="input-group input-group-merge input-group-alternative">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
                                     <input class="form-control @error('email') is-invalid @enderror" placeholder="Email"
-                                        type="email" name="email">
+                                        type="email" name="email" value="{{ $email ?? old('email') }}">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group @error('password') has-danger @enderror">
                                 <div class="input-group input-group-merge input-group-alternative">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Password" type="password" name="password">
+                                    <input class="form-control  @error('password') is-invalid @enderror"
+                                        placeholder="Password" type="password" name="password">
                                     @error('password')
-                                        <span class="text-danger" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="custom-control custom-control-alternative custom-checkbox">
-                                <input class="custom-control-input" id=" customCheckLogin" type="checkbox" name="remember">
-                                <label class="custom-control-label" for=" customCheckLogin">
-                                    <span class="text-muted">Remember me</span>
-                                </label>
+                            <div class="form-group @error('password_confirmation') has-danger @enderror">
+                                <div class="input-group input-group-merge input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                    </div>
+                                    <input class="form-control @error('password_confirmation') is-invalid @enderror"
+                                        placeholder="Confirm Password" type="password" name="password_confirmation">
+                                    @error('password_confirmation')
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary my-4">Sign in</button>
+                                <button type="button" class="btn btn-primary mt-4">{{ __('Reset Password') }}</button>
                             </div>
                         </form>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-6">
-                        <a href="{{ route('password.request') }}" class="text-light">
-                            <small>Forgot password?</small>
-                        </a>
                     </div>
                 </div>
             </div>

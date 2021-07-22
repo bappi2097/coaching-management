@@ -55,14 +55,23 @@ if (!function_exists("notification")) {
     }
 }
 
-function dashboardURL()
-{
-    if (auth()->check()) {
-        if (auth()->user()->hasRole('admin')) {
-            return route('admin.dashboard');
-        } else {
-            return route('home');
+/**
+ * dashboardURL return dashboard path for 
+ * logged in users
+ *
+ * @return string
+ */
+if (!function_exists("dashboardURL")) {
+    function dashboardURL(): string
+    {
+        if (auth()->check()) {
+            if (auth()->user()->hasRole('admin')) {
+                return route('admin.dashboard');
+            } else {
+                return route('home');
+            }
         }
+        return "#";
     }
 }
 

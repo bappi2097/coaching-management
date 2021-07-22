@@ -48,20 +48,8 @@
                         <div class="text-center text-muted mb-4">
                             <small>Or sign in with credentials</small>
                         </div>
-                        <form method="POST" action="{{ url('login') }}" role="form">
+                        <form method="POST" action="" role="form">
                             @csrf
-                            <div class="form-group mb-3 @error('email') has-danger @enderror">
-                                <div class="input-group input-group-merge input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                    </div>
-                                    <input class="form-control @error('email') is-invalid @enderror" placeholder="Email"
-                                        type="email" name="email">
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <div class="input-group input-group-merge input-group-alternative">
                                     <div class="input-group-prepend">
@@ -73,12 +61,6 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="custom-control custom-control-alternative custom-checkbox">
-                                <input class="custom-control-input" id=" customCheckLogin" type="checkbox" name="remember">
-                                <label class="custom-control-label" for=" customCheckLogin">
-                                    <span class="text-muted">Remember me</span>
-                                </label>
-                            </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary my-4">Sign in</button>
                             </div>
@@ -87,7 +69,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-6">
-                        <a href="{{ route('password.request') }}" class="text-light">
+                        <a href="{{ route('auth.password.request') }}" class="text-light">
                             <small>Forgot password?</small>
                         </a>
                     </div>

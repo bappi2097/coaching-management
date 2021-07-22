@@ -44,11 +44,12 @@
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
                 <div class="card bg-secondary border-0 mb-0">
+
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
-                            <small>Or sign in with credentials</small>
+                            <small>Reset Password</small>
                         </div>
-                        <form method="POST" action="{{ url('login') }}" role="form">
+                        <form role="form" method="POST" action="{{ route('password.email') }}">
                             @csrf
                             <div class="form-group mb-3 @error('email') has-danger @enderror">
                                 <div class="input-group input-group-merge input-group-alternative">
@@ -56,40 +57,17 @@
                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
                                     <input class="form-control @error('email') is-invalid @enderror" placeholder="Email"
-                                        type="email" name="email">
+                                        type="email" name="email" value="{{ old('email') }}">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="input-group input-group-merge input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                    </div>
-                                    <input class="form-control" placeholder="Password" type="password" name="password">
-                                    @error('password')
-                                        <span class="text-danger" role="alert">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="custom-control custom-control-alternative custom-checkbox">
-                                <input class="custom-control-input" id=" customCheckLogin" type="checkbox" name="remember">
-                                <label class="custom-control-label" for=" customCheckLogin">
-                                    <span class="text-muted">Remember me</span>
-                                </label>
-                            </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary my-4">Sign in</button>
+                                <button type="submit"
+                                    class="btn btn-primary my-4">{{ __('Send Password Reset Link') }}</button>
                             </div>
                         </form>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-6">
-                        <a href="{{ route('password.request') }}" class="text-light">
-                            <small>Forgot password?</small>
-                        </a>
                     </div>
                 </div>
             </div>

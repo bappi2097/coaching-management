@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{asset('favicon.ico')}}" rel="icon">
-    <link href="{{landing_asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <link href="{{ asset('favicon.ico') }}" rel="icon">
+    <link href="{{ landing_asset('img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
@@ -19,15 +19,15 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="{{landing_asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{landing_asset('vendor/icofont/icofont.min.css')}}" rel="stylesheet">
-    <link href="{{landing_asset('vendor/remixicon/remixicon.css')}}" rel="stylesheet">
-    <link href="{{landing_asset('vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-    <link href="{{landing_asset('vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
-    <link href="{{landing_asset('vendor/venobox/venobox.css')}}" rel="stylesheet">
-    <link href="{{landing_asset('vendor/aos/aos.css')}}" rel="stylesheet">
+    <link href="{{ landing_asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ landing_asset('vendor/icofont/icofont.min.css') }}" rel="stylesheet">
+    <link href="{{ landing_asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ landing_asset('vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ landing_asset('vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ landing_asset('vendor/venobox/venobox.css') }}" rel="stylesheet">
+    <link href="{{ landing_asset('vendor/aos/aos.css') }}" rel="stylesheet">
 
-    <link href="{{landing_asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{ landing_asset('css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -47,7 +47,12 @@
                     <li><a href="#team">Team</a></li>
                     <li><a href="#faq">FAQ</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li class="get-started"><a href="#about">Get Started</a></li>
+                    @auth
+                        <li class="get-started"><a href="{{ route('auth.login') }}">Sign In</a></li>
+                    @endauth
+                    @guest
+                        <li class="get-started"><a href="{{ dashboardURL() }}">Dashboard</a></li>
+                    @endguest
                 </ul>
             </nav><!-- .nav-menu -->
 
@@ -63,12 +68,14 @@
                     <h1 data-aos="fade-up">Grow your business with Vesperr</h1>
                     <h2 data-aos="fade-up" data-aos-delay="400">We are team of talented designers making websites with
                         Bootstrap</h2>
-                    <div data-aos="fade-up" data-aos-delay="800">
-                        <a href="#about" class="btn-get-started scrollto">Get Started</a>
-                    </div>
+                    @guest
+                        <div data-aos="fade-up" data-aos-delay="800">
+                            <a href="{{ route('auth.login') }}" class="btn-get-started scrollto">Sign In</a>
+                        </div>
+                    @endguest
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
-                    <img src="{{landing_asset('img/ud_book.svg')}}" class=" img-fluid animated" alt="">
+                    <img src="{{ landing_asset('img/ud_book.svg') }}" class=" img-fluid animated" alt="">
                 </div>
             </div>
         </div>
@@ -84,32 +91,32 @@
                 <div class="row">
 
                     <div class="col-lg-2 col-md-4 col-6">
-                        <img src="{{landing_asset('img/clients/client-1.png')}}" class="img-fluid" alt=""
+                        <img src="{{ landing_asset('img/clients/client-1.png') }}" class="img-fluid" alt=""
                             data-aos="zoom-in">
                     </div>
 
                     <div class="col-lg-2 col-md-4 col-6">
-                        <img src="{{landing_asset('img/clients/client-2.png')}}" class="img-fluid" alt=""
+                        <img src="{{ landing_asset('img/clients/client-2.png') }}" class="img-fluid" alt=""
                             data-aos="zoom-in" data-aos-delay="100">
                     </div>
 
                     <div class="col-lg-2 col-md-4 col-6">
-                        <img src="{{landing_asset('img/clients/client-3.png')}}" class="img-fluid" alt=""
+                        <img src="{{ landing_asset('img/clients/client-3.png') }}" class="img-fluid" alt=""
                             data-aos="zoom-in" data-aos-delay="200">
                     </div>
 
                     <div class="col-lg-2 col-md-4 col-6">
-                        <img src="{{landing_asset('img/clients/client-4.png')}}" class="img-fluid" alt=""
+                        <img src="{{ landing_asset('img/clients/client-4.png') }}" class="img-fluid" alt=""
                             data-aos="zoom-in" data-aos-delay="300">
                     </div>
 
                     <div class="col-lg-2 col-md-4 col-6">
-                        <img src="{{landing_asset('img/clients/client-5.png')}}" class="img-fluid" alt=""
+                        <img src="{{ landing_asset('img/clients/client-5.png') }}" class="img-fluid" alt=""
                             data-aos="zoom-in" data-aos-delay="400">
                     </div>
 
                     <div class="col-lg-2 col-md-4 col-6">
-                        <img src="{{landing_asset('img/clients/client-6.png')}}" class="img-fluid" alt=""
+                        <img src="{{ landing_asset('img/clients/client-6.png') }}" class="img-fluid" alt=""
                             data-aos="zoom-in" data-aos-delay="500">
                     </div>
 
@@ -164,7 +171,7 @@
                 <div class="row">
                     <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-xl-start"
                         data-aos="fade-right" data-aos-delay="150">
-                        <img src="{{landing_asset('img/counts-img.svg')}}" alt="" class=" img-fluid">
+                        <img src="{{ landing_asset('img/counts-img.svg') }}" alt="" class=" img-fluid">
                     </div>
 
                     <div class="col-xl-7 d-flex align-items-stretch pt-4 pt-xl-0" data-aos="fade-left"
@@ -227,8 +234,8 @@
 
                     <div class="testimonial-wrap">
                         <div class="testimonial-item">
-                            <img src="{{landing_asset('img/testimonials/testimonials-1.jpg')}}" class="testimonial-img"
-                                alt="">
+                            <img src="{{ landing_asset('img/testimonials/testimonials-1.jpg') }}"
+                                class="testimonial-img" alt="">
                             <h3>Saul Goodman</h3>
                             <h4>Ceo &amp; Founder</h4>
                             <p>
@@ -243,8 +250,8 @@
 
                     <div class="testimonial-wrap">
                         <div class="testimonial-item">
-                            <img src="{{landing_asset('img/testimonials/testimonials-2.jpg')}}" class="testimonial-img"
-                                alt="">
+                            <img src="{{ landing_asset('img/testimonials/testimonials-2.jpg') }}"
+                                class="testimonial-img" alt="">
                             <h3>Sara Wilsson</h3>
                             <h4>Designer</h4>
                             <p>
@@ -259,8 +266,8 @@
 
                     <div class="testimonial-wrap">
                         <div class="testimonial-item">
-                            <img src="{{landing_asset('img/testimonials/testimonials-3.jpg')}}" class="testimonial-img"
-                                alt="">
+                            <img src="{{ landing_asset('img/testimonials/testimonials-3.jpg') }}"
+                                class="testimonial-img" alt="">
                             <h3>Jena Karlis</h3>
                             <h4>Store Owner</h4>
                             <p>
@@ -274,8 +281,8 @@
 
                     <div class="testimonial-wrap">
                         <div class="testimonial-item">
-                            <img src="{{landing_asset('img/testimonials/testimonials-4.jpg')}}" class="testimonial-img"
-                                alt="">
+                            <img src="{{ landing_asset('img/testimonials/testimonials-4.jpg') }}"
+                                class="testimonial-img" alt="">
                             <h3>Matt Brandon</h3>
                             <h4>Freelancer</h4>
                             <p>
@@ -290,8 +297,8 @@
 
                     <div class="testimonial-wrap">
                         <div class="testimonial-item">
-                            <img src="{{landing_asset('img/testimonials/testimonials-5.jpg')}}" class="testimonial-img"
-                                alt="">
+                            <img src="{{ landing_asset('img/testimonials/testimonials-5.jpg') }}"
+                                class="testimonial-img" alt="">
                             <h3>John Larson</h3>
                             <h4>Entrepreneur</h4>
                             <p>
@@ -324,7 +331,7 @@
                     <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
                         <div class="member" data-aos="fade-up" data-aos-delay="100">
                             <div class="member-img">
-                                <img src="{{landing_asset('img/team/team-1.jpg')}}" class="img-fluid" alt="">
+                                <img src="{{ landing_asset('img/team/team-1.jpg') }}" class="img-fluid" alt="">
                                 <div class="social">
                                     <a href=""><i class="icofont-twitter"></i></a>
                                     <a href=""><i class="icofont-facebook"></i></a>
@@ -342,7 +349,7 @@
                     <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
                         <div class="member" data-aos="fade-up" data-aos-delay="200">
                             <div class="member-img">
-                                <img src="{{landing_asset('img/team/team-2.jpg')}}" class="img-fluid" alt="">
+                                <img src="{{ landing_asset('img/team/team-2.jpg') }}" class="img-fluid" alt="">
                                 <div class="social">
                                     <a href=""><i class="icofont-twitter"></i></a>
                                     <a href=""><i class="icofont-facebook"></i></a>
@@ -360,7 +367,7 @@
                     <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
                         <div class="member" data-aos="fade-up" data-aos-delay="300">
                             <div class="member-img">
-                                <img src="{{landing_asset('img/team/team-3.jpg')}}" class="img-fluid" alt="">
+                                <img src="{{ landing_asset('img/team/team-3.jpg') }}" class="img-fluid" alt="">
                                 <div class="social">
                                     <a href=""><i class="icofont-twitter"></i></a>
                                     <a href=""><i class="icofont-facebook"></i></a>
@@ -378,7 +385,7 @@
                     <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
                         <div class="member" data-aos="fade-up" data-aos-delay="400">
                             <div class="member-img">
-                                <img src="{{landing_asset('img/team/team-4.jpg')}}" class="img-fluid" alt="">
+                                <img src="{{ landing_asset('img/team/team-4.jpg') }}" class="img-fluid" alt="">
                                 <div class="social">
                                     <a href=""><i class="icofont-twitter"></i></a>
                                     <a href=""><i class="icofont-facebook"></i></a>
@@ -593,19 +600,19 @@
     <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="{{landing_asset('vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{landing_asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{landing_asset('vendor/jquery.easing/jquery.easing.min.js')}}"></script>
-    <script src="{{landing_asset('vendor/php-email-form/validate.js')}}"></script>
-    <script src="{{landing_asset('vendor/waypoints/jquery.waypoints.min.js')}}"></script>
-    <script src="{{landing_asset('vendor/counterup/counterup.min.js')}}"></script>
-    <script src="{{landing_asset('vendor/owl.carousel/owl.carousel.min.js')}}"></script>
-    <script src="{{landing_asset('vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
-    <script src="{{landing_asset('vendor/venobox/venobox.min.js')}}"></script>
-    <script src="{{landing_asset('vendor/aos/aos.js')}}"></script>
+    <script src="{{ landing_asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ landing_asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ landing_asset('vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ landing_asset('vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ landing_asset('vendor/waypoints/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ landing_asset('vendor/counterup/counterup.min.js') }}"></script>
+    <script src="{{ landing_asset('vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ landing_asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ landing_asset('vendor/venobox/venobox.min.js') }}"></script>
+    <script src="{{ landing_asset('vendor/aos/aos.js') }}"></script>
 
     <!-- Template Main JS File -->
-    <script src=" {{landing_asset('js/main.js')}}"></script>
+    <script src=" {{ landing_asset('js/main.js') }}"></script>
 
 </body>
 

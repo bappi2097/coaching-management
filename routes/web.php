@@ -17,9 +17,49 @@ Route::get('/', function () {
     return view('landing.master');
 });
 
-Route::get('/admin', function () {
-    return view('admin.home');
+Route::group([], function () {
+    Route::get("login", [\App\Http\Controllers\Auth\LoginController::class, "showLoginForm"])->name("login");
+    Route::post("login", [\App\Http\Controllers\Auth\LoginController::class, "login"]);
+    Route::get('logout', [\App\Http\Controllers\Auth\LoginController::class, "logout"]);
+    Route::group(["prefix" => "password", "as" => "password."], function () {
+        Route::get("reset", [\App\Http\Controllers\Auth\ForgotPasswordController::class, "showLinkRequestForm"])->name("request");
+        Route::post("email", [\App\Http\Controllers\Auth\ForgotPasswordController::class, "sendResetLinkEmail"])->name("email");
+        Route::get("reset/{token}", [\App\Http\Controllers\Auth\ResetPasswordController::class, "showResetForm"])->name("reset");
+        Route::post("reset", [\App\Http\Controllers\Auth\ResetPasswordController::class, "reset"])->name("update");
+    });
 });
+
+/* -------------------------------------------------------------------------- */
+/*                                Officer Route                               */
+/* -------------------------------------------------------------------------- */
+Route::group(["prefix" => "officer", "as" => "officer.", "middleware" => ["auth", "role:officer"]], function () {
+    // 
+});
+
+/* -------------------------------------------------------------------------- */
+/*                                Teacher Route                               */
+/* -------------------------------------------------------------------------- */
+Route::group(["prefix" => "teacher", "as" => "teacher.", "middleware" => ["auth", "role:teacher"]], function () {
+    // 
+});
+
+/* -------------------------------------------------------------------------- */
+/*                                Student Route                               */
+/* -------------------------------------------------------------------------- */
+Route::group(["prefix" => "student", "as" => "student.", "middleware" => ["auth", "role:student"]], function () {
+    // 
+});
+
+/* -------------------------------------------------------------------------- */
+/*                               Guardian Route                               */
+/* -------------------------------------------------------------------------- */
+Route::group(["prefix" => "guardian", "as" => "guardian.", "middleware" => ["auth", "role:guardian"]], function () {
+    // 
+});
+
+// Route::get('/admin', function () {
+//     return view('admin.home');
+// });
 
 // Route::get('login', function () {
 //     return view('admin.auth.login');
@@ -33,6 +73,6 @@ Route::get('/admin', function () {
 //     return view('admin.auth.forget');
 // });
 
-Auth::routes(["verify" => true]);
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware("verified");
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
