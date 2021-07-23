@@ -3,7 +3,7 @@
     <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand" href="dashboard.html">
-                <img src="{{ dashboard_asset('img/brand/white.png') }}">
+                <img src="{{ asset('dashboard/img/brand/white.png') }}">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
                 aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">

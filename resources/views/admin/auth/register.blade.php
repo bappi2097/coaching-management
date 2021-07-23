@@ -3,7 +3,7 @@
     <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand" href="dashboard.html">
-                <img src="{{ dashboard_asset('img/brand/white.png') }}">
+                <img src="{{ asset('dashboard/img/brand/white.png') }}">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
                 aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,12 +52,12 @@
                         <div class="text-center">
                             <a href="#" class="btn btn-neutral btn-icon mr-4">
                                 <span class="btn-inner--icon"><img
-                                        src="{{ dashboard_asset('img/icons/common/github.svg') }}"></span>
+                                        src="{{ asset('dashboard/img/icons/common/github.svg') }}"></span>
                                 <span class="btn-inner--text">Github</span>
                             </a>
                             <a href="#" class="btn btn-neutral btn-icon">
                                 <span class="btn-inner--icon"><img
-                                        src="{{ dashboard_asset('img/icons/common/google.svg') }}"></span>
+                                        src="{{ asset('dashboard/img/icons/common/google.svg') }}"></span>
                                 <span class="btn-inner--text">Google</span>
                             </a>
                         </div>

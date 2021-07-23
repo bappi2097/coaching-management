@@ -48,7 +48,7 @@ class ProfileController extends Controller
             "password" => "required|confirmed"
         ]);
         $data = [
-            "password" => $request->password,
+            "password" => bcrypt($request->password),
         ];
         if (auth()->user()->update($data)) {
             Toastr::success('Successfully Password Changed', "Success");

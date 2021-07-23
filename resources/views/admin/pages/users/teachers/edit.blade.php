@@ -11,17 +11,17 @@
                     <div class="col-lg-3 order-lg-2">
                         <div class="card-profile-image">
                             <a href="javascript::void(0);" onclick="document.getElementById('user-image-btn').click();">
-                                <img id="user-image" class="rounded-circle" alt="{{ $user->name }}"
-                                    src="{{ asset($user->image()) }}" />
+                                <img id="user-image" class="rounded-circle" alt="{{ $teacher->name }}"
+                                    src="{{ asset($teacher->image()) }}" />
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="card-body mt-7 pt-0">
                     <div class="text-center">
-                        <h5 class="h3">{{ $user->fullName() }}</span></h5>
+                        <h5 class="h3">{{ $teacher->fullName() }}</span></h5>
                         <div class="h5 font-weight-300">
-                            <i class="ni location_pin mr-2"></i>{{ $user->email }}
+                            <i class="ni location_pin mr-2"></i>{{ $teacher->email }}
                         </div>
                     </div>
                 </div>
@@ -32,16 +32,18 @@
                 <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-8">
-                            <h3 class="mb-0">Edit profile </h3>
+                            <h3 class="mb-0">Edit Teacher Profile </h3>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('officer.update-profile') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('officer.teachers.update', $teacher->id) }}"
+                        enctype="multipart/form-data">
                         @csrf
+                        @method("PUT")
                         <input type='file' name="image" id="user-image-btn" style="display: none;" onchange="readURL(this);"
                             accept="image/*" />
-                        <h6 class="heading-small text-muted mb-4">User information</h6>
+                        <h6 class="heading-small text-muted mb-4">Teacher information</h6>
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -49,7 +51,7 @@
                                         <label class="form-control-label" for="input-first-name">First name</label>
                                         <input type="text" id="input-first-name"
                                             class="form-control @error('first_name') is-invalid @enderror" name="first_name"
-                                            placeholder="First name" value="{{ $user->first_name }}">
+                                            placeholder="First name" value="{{ $teacher->first_name }}">
                                         @error('first_name')
                                             <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
@@ -60,7 +62,7 @@
                                         <label class="form-control-label" for="input-last-name">Last name</label>
                                         <input type="text" id="input-last-name"
                                             class="form-control @error('last_name') is-invalid @enderror"
-                                            placeholder="Last name" name="last_name" value="{{ $user->last_name }}">
+                                            placeholder="Last name" name="last_name" value="{{ $teacher->last_name }}">
                                         @error('last_name')
                                             <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
@@ -73,7 +75,7 @@
                                         <label class="form-control-label" for="input-email">Email address</label>
                                         <input type="email" id="input-email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
-                                            placeholder="jhon.doe@mail.com" value="{{ $user->email }}">
+                                            placeholder="jhon.doe@mail.com" value="{{ $teacher->email }}">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
@@ -87,8 +89,9 @@
                         <hr class="my-4" />
                         <!-- Address -->
                     </form>
-                    <form method="POST" action="{{ route('officer.update-password') }}">
+                    <form method="POST" action="{{ route('officer.teachers.update-password', $teacher->id) }}">
                         @csrf
+                        @method('PUT')
                         <h6 class="heading-small text-muted mb-4">Change Password</h6>
                         <div class="pl-lg-4">
                             <div class="row justify-content-center">

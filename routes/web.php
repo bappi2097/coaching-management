@@ -36,6 +36,17 @@ Route::group(["prefix" => "officer", "as" => "officer.", "middleware" => ["auth"
     Route::get('/profile', [\App\Http\Controllers\Officer\ProfileController::class, 'profile'])->name('profile');
     Route::post('/update-profile', [\App\Http\Controllers\Officer\ProfileController::class, 'updateProfile'])->name('update-profile');
     Route::post('/update-password', [\App\Http\Controllers\Officer\ProfileController::class, 'updatePassword'])->name('update-password');
+    Route::group(["prefix" => "teachers", "as" => "teachers."], function () {
+        Route::get("/", [\App\Http\Controllers\Officer\TeacherController::class, "index"])->name('index');
+        Route::get("/create", [\App\Http\Controllers\Officer\TeacherController::class, "create"])->name('create');
+        Route::post("/", [\App\Http\Controllers\Officer\TeacherController::class, "store"])->name('store');
+        Route::get("/{teacher}", [\App\Http\Controllers\Officer\TeacherController::class, "show"])->name('show');
+        Route::get("/{teacher}/edit", [\App\Http\Controllers\Officer\TeacherController::class, "edit"])->name('edit');
+        Route::put("/{teacher}", [\App\Http\Controllers\Officer\TeacherController::class, "update"])->name('update');
+        Route::put("/{teacher}/password", [\App\Http\Controllers\Officer\TeacherController::class, "updatePassword"])->name('update-password');
+        Route::delete("/{teacher}", [\App\Http\Controllers\Officer\TeacherController::class, "destroy"])->name('destroy');
+    });
+    Route::resource('teachers', \App\Http\Controllers\Officer\TeacherController::class);
 });
 
 /* -------------------------------------------------------------------------- */

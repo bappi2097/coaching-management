@@ -39,6 +39,13 @@ if (!function_exists('set_active')) {
     }
 }
 
+if (!function_exists('dropdownActive')) {
+    function dropdownActive($path)
+    {
+        return call_user_func_array('Request::is', (array)$path) || call_user_func_array('Request::is', (array)($path . "/*")) ? true : false;
+    }
+}
+
 /**
  * notification
  *
@@ -182,5 +189,19 @@ if (!function_exists('roleText')) {
             $role = ucwords(join(' ', auth()->user()->getRoleNames()->all()));
             return $role;
         }
+    }
+}
+
+/**
+ * randomColor
+ *
+ * @return string
+ */
+if (!function_exists('randomColor')) {
+
+    function randomColor($id): string
+    {
+        $class = ['danger', 'info', 'primary', 'success', 'warning'];
+        return $class[$id % 5] ?? '';
     }
 }

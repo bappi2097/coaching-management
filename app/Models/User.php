@@ -65,7 +65,7 @@ class User extends Authenticatable
      */
     public function image(): string
     {
-        return !empty($this->image) && Storage::exists($this->image) ? $this->image : "img/theme/team-1.jpg";
+        return !empty($this->image) && Storage::exists($this->image) ? $this->image : "dashboard/img/theme/team-1.jpg";
     }
 
     /**
