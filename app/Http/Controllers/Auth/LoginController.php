@@ -40,7 +40,6 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->redirectTo = dashboardURL();
     }
 
 
@@ -221,5 +220,15 @@ class LoginController extends Controller
     protected function loggedOut(Request $request)
     {
         //
+    }
+
+    /**
+     * Get the post register / login redirect path.
+     *
+     * @return string
+     */
+    public function redirectPath()
+    {
+        return dashboardURL();
     }
 }

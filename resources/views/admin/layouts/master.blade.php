@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ dashboard_asset('vendor/@fortawesome/fontawesome-free/css/all.min.css') }}"
         type="text/css">
     <link rel="stylesheet" href="{{ dashboard_asset('css/argon.css?v=1.2.0') }}" type="text/css">
+    <link rel="stylesheet" href="{{ dashboard_asset('css/toastr.css') }}">
     @stack('style')
 </head>
 
@@ -35,6 +36,8 @@
     <script src="{{ dashboard_asset('vendor/chart.js/dist/Chart.extension.js') }}"></script>
     <!-- Argon JS -->
     <script src="{{ dashboard_asset('js/argon.js?v=1.2.0') }}"></script>
+    <script src="{{ dashboard_asset('js/toastr.js') }}"></script>
+    {!! Toastr::message() !!}
     @stack('scripts')
 </body>
 

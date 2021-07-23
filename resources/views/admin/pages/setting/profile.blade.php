@@ -10,49 +10,18 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-3 order-lg-2">
                         <div class="card-profile-image">
-                            <a href="#">
-                                <img src="{{ dashboard_asset('img/theme/team-4.jpg') }}" class="rounded-circle">
+                            <a href="javascript::void(0);" onclick="document.getElementById('user-image-btn').click();">
+                                <img id="user-image" class="rounded-circle" alt="{{ $user->name }}"
+                                    src="{{ asset($user->image()) }}" />
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-                    <div class="d-flex justify-content-between">
-                        <a href="#" class="btn btn-sm btn-info  mr-4 ">Connect</a>
-                        <a href="#" class="btn btn-sm btn-default float-right">Message</a>
-                    </div>
-                </div>
-                <div class="card-body pt-0">
-                    <div class="row">
-                        <div class="col">
-                            <div class="card-profile-stats d-flex justify-content-center">
-                                <div>
-                                    <span class="heading">22</span>
-                                    <span class="description">Friends</span>
-                                </div>
-                                <div>
-                                    <span class="heading">10</span>
-                                    <span class="description">Photos</span>
-                                </div>
-                                <div>
-                                    <span class="heading">89</span>
-                                    <span class="description">Comments</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="card-body mt-7 pt-0">
                     <div class="text-center">
-                        <h5 class="h3">
-                            Jessica Jones<span class="font-weight-light">, 27</span>
-                        </h5>
+                        <h5 class="h3">{{ $user->fullName() }}</span></h5>
                         <div class="h5 font-weight-300">
-                            <i class="ni location_pin mr-2"></i>Bucharest, Romania
-                        </div>
-                        <div class="h5 mt-4">
-                            <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
-                        </div>
-                        <div>
-                            <i class="ni education_hat mr-2"></i>University of Computer Science
+                            <i class="ni location_pin mr-2"></i>{{ $user->email }}
                         </div>
                     </div>
                 </div>
@@ -65,95 +34,108 @@
                         <div class="col-8">
                             <h3 class="mb-0">Edit profile </h3>
                         </div>
-                        <div class="col-4 text-right">
-                            <a href="#!" class="btn btn-sm btn-primary">Settings</a>
-                        </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form method="POST" action="{{ route('officer.update-profile') }}" enctype="multipart/form-data">
+                        @csrf
+                        <input type='file' name="image" id="user-image-btn" style="display: none;" onchange="readURL(this);"
+                            accept="image/*" />
                         <h6 class="heading-small text-muted mb-4">User information</h6>
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="input-username">Username</label>
-                                        <input type="text" id="input-username" class="form-control" placeholder="Username"
-                                            value="lucky.jesse">
+                                    <div class="form-group @error('first_name') has-danger @enderror">
+                                        <label class="form-control-label" for="input-first-name">First name</label>
+                                        <input type="text" id="input-first-name"
+                                            class="form-control @error('first_name') is-invalid @enderror" name="first_name"
+                                            placeholder="First name" value="{{ $user->first_name }}">
+                                        @error('first_name')
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="input-email">Email address</label>
-                                        <input type="email" id="input-email" class="form-control"
-                                            placeholder="jesse@example.com">
+                                    <div class="form-group @error('last_name') has-danger @enderror">
+                                        <label class="form-control-label" for="input-last-name">Last name</label>
+                                        <input type="text" id="input-last-name"
+                                            class="form-control @error('last_name') is-invalid @enderror"
+                                            placeholder="Last name" name="last_name" value="{{ $user->last_name }}">
+                                        @error('last_name')
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="input-first-name">First name</label>
-                                        <input type="text" id="input-first-name" class="form-control"
-                                            placeholder="First name" value="Lucky">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="input-last-name">Last name</label>
-                                        <input type="text" id="input-last-name" class="form-control" placeholder="Last name"
-                                            value="Jesse">
+                                    <div class="form-group @error('email') has-danger @enderror">
+                                        <label class="form-control-label" for="input-email">Email address</label>
+                                        <input type="email" id="input-email"
+                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                            placeholder="jhon.doe@mail.com" value="{{ $user->email }}">
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group text-right">
+                            <button class="btn btn-primary">Save</button>
                         </div>
                         <hr class="my-4" />
                         <!-- Address -->
-                        <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                    </form>
+                    <form method="POST" action="{{ route('officer.update-password') }}">
+                        @csrf
+                        <h6 class="heading-small text-muted mb-4">Change Password</h6>
                         <div class="pl-lg-4">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="input-address">Address</label>
-                                        <input id="input-address" class="form-control" placeholder="Home Address"
-                                            value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6">
+                                    <div class="form-group @error('old_password') has-danger @enderror">
+                                        <label class="form-control-label" for="input-old-password">Old Password</label>
+                                        <input type="password" id="input-old-password"
+                                            class="form-control @error('old_password') is-invalid @enderror"
+                                            name="old_password">
+                                        @error('old_password')
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="input-city">City</label>
-                                        <input type="text" id="input-city" class="form-control" placeholder="City"
-                                            value="New York">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="input-country">Country</label>
-                                        <input type="text" id="input-country" class="form-control" placeholder="Country"
-                                            value="United States">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="input-country">Postal code</label>
-                                        <input type="number" id="input-postal-code" class="form-control"
-                                            placeholder="Postal code">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6">
+                                    <div class="form-group @error('password') has-danger @enderror">
+                                        <label class="form-control-label" for="input-new-password">New Password</label>
+                                        <input type="password" id="input-new-password"
+                                            class="form-control @error('password') is-invalid @enderror" name="password">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6">
+                                    <div class="form-group @error('password_confirmation') has-danger @enderror">
+                                        <label class="form-control-label" for="input-confirm-password">Confirm
+                                            Password</label>
+                                        <input type="password" id="input-confirm-password"
+                                            class="form-control @error('password_confirmation') is-invalid @enderror"
+                                            name="password_confirmation">
+                                        @error('password_confirmation')
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group text-right">
+                            <button class="btn btn-primary">Save</button>
                         </div>
                         <hr class="my-4" />
-                        <!-- Description -->
-                        <h6 class="heading-small text-muted mb-4">About me</h6>
-                        <div class="pl-lg-4">
-                            <div class="form-group">
-                                <label class="form-control-label">About Me</label>
-                                <textarea rows="4" class="form-control"
-                                    placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
-                            </div>
-                        </div>
+                        <!-- Address -->
                     </form>
                 </div>
             </div>
@@ -161,3 +143,17 @@
     </div>
     <!-- Footer -->
 @endsection
+
+@push('scripts')
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#user-image').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+@endpush

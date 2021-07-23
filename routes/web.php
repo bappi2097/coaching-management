@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::group([], function () {
     Route::get("login", [\App\Http\Controllers\Auth\LoginController::class, "showLoginForm"])->name("login");
     Route::post("login", [\App\Http\Controllers\Auth\LoginController::class, "login"]);
-    Route::post('logout', [\App\Http\Controllers\Auth\LoginController::class, "logout"])->middleware('auth');
+    Route::post('logout', [\App\Http\Controllers\Auth\LoginController::class, "logout"])->name('logout')->middleware('auth');
     Route::group(["prefix" => "password", "as" => "password."], function () {
         Route::get("reset", [\App\Http\Controllers\Auth\ForgotPasswordController::class, "showLinkRequestForm"])->name("request");
         Route::post("email", [\App\Http\Controllers\Auth\ForgotPasswordController::class, "sendResetLinkEmail"])->name("email");

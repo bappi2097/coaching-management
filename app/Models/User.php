@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -44,6 +45,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    /**
+     * this method return user full name
+     *
+     * @return string
+     */
+    public function fullName(): string
+    {
+        return $this->first_name . " " . $this->last_name;
+    }
+
+    /**
+     * this method return user image if exists
+     * unless return dummy image
+     *
+     * @return string
+     */
+    public function image(): string
+    {
+        return !empty($this->image) && Storage::exists($this->image) ? $this->image : "img/theme/team-1.jpg";
+    }
 
     /**
      * relation with guardian
