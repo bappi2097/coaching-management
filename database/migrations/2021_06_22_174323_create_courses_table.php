@@ -17,6 +17,7 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->text('title')->nullable();
             $table->text('slug')->unique();
+            $table->string('image')->nullable();
             $table->longText('description')->nullable();
             $table->float('course_fee')->default(0.00);
             $table->boolean('is_active')->default(true);

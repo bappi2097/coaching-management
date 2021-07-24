@@ -50,6 +50,13 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ set_active('officer/dashboard') }}"
+                            href="{{ route('officer.courses.index') }}">
+                            <i class="fas fa-book"></i>
+                            <span class="nav-link-text">Course</span>
+                        </a>
+                    </li>
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">
