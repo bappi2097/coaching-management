@@ -35,6 +35,9 @@
                         <div class="col-8">
                             <h3 class="mb-0">Edit Student Profile </h3>
                         </div>
+                        <div class="col-4">
+                            <a href="{{ route('officer.enroll-courses.create') }}" class="btn btn-primary">Enroll</a>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">

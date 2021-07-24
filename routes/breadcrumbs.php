@@ -86,3 +86,28 @@ Breadcrumbs::for('officer.courses.edit', function ($trail, $id) {
     $trail->parent('officer.courses');
     $trail->push('Edit', route('officer.courses.edit', $id));
 });
+
+
+// Dashboard > Enroll Course
+Breadcrumbs::for('officer.enroll-courses', function ($trail) {
+    $trail->parent('officer.dashboard');
+    $trail->push('Enroll Course', route('officer.enroll-courses.index'));
+});
+
+// Dashboard > Enroll Course > Create
+Breadcrumbs::for('officer.enroll-courses.create', function ($trail) {
+    $trail->parent('officer.enroll-courses');
+    $trail->push('Create', route('officer.enroll-courses.create'));
+});
+
+// Dashboard > Enroll Course > Show
+Breadcrumbs::for('officer.enroll-courses.show', function ($trail, $student) {
+    $trail->parent('officer.enroll-courses');
+    $trail->push('Show', route('officer.enroll-courses.show', $student));
+});
+
+// Dashboard > Enroll Course > Edit
+Breadcrumbs::for('officer.enroll-courses.edit', function ($trail, $student) {
+    $trail->parent('officer.enroll-courses');
+    $trail->push('Edit', route('officer.enroll-courses.edit', $student));
+});

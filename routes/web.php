@@ -65,6 +65,15 @@ Route::group(["prefix" => "officer", "as" => "officer.", "middleware" => ["auth"
         Route::put("/{course}", [\App\Http\Controllers\Officer\CourseController::class, "update"])->name('update');
         Route::delete("/{course}", [\App\Http\Controllers\Officer\CourseController::class, "destroy"])->name('destroy');
     });
+    Route::group(["prefix" => "enroll-courses", "as" => "enroll-courses."], function () {
+        Route::get("/", [\App\Http\Controllers\Officer\EnrollCourseController::class, "index"])->name('index');
+        Route::get("/create", [\App\Http\Controllers\Officer\EnrollCourseController::class, "create"])->name('create');
+        Route::post("/", [\App\Http\Controllers\Officer\EnrollCourseController::class, "store"])->name('store');
+        Route::get("/{student}", [\App\Http\Controllers\Officer\EnrollCourseController::class, "show"])->name('show');
+        Route::get("/{student}/edit", [\App\Http\Controllers\Officer\EnrollCourseController::class, "edit"])->name('edit');
+        Route::put("/{student}", [\App\Http\Controllers\Officer\EnrollCourseController::class, "update"])->name('update');
+        Route::delete("/{student}", [\App\Http\Controllers\Officer\EnrollCourseController::class, "destroy"])->name('destroy');
+    });
 });
 
 /* -------------------------------------------------------------------------- */
@@ -87,23 +96,3 @@ Route::group(["prefix" => "student", "as" => "student.", "middleware" => ["auth"
 Route::group(["prefix" => "guardian", "as" => "guardian.", "middleware" => ["auth", "role:guardian"]], function () {
     // 
 });
-
-// Route::get('/admin', function () {
-//     return view('admin.home');
-// });
-
-// Route::get('login', function () {
-//     return view('admin.auth.login');
-// });
-
-// Route::get('register', function () {
-//     return view('admin.auth.register');
-// });
-
-// Route::get('password', function () {
-//     return view('admin.auth.forget');
-// });
-
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
