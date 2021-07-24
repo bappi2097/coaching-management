@@ -13,6 +13,8 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\User::factory(10)->create()->each(function ($teacher) {
+            $teacher->assignRole('student');
+        });
     }
 }

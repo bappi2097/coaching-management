@@ -30,13 +30,21 @@
                             <i class="ni ni-single-02 text-yellow"></i>
                             <span class="nav-link-text">Users</span>
                         </a>
-                        <div class="collapse {{ dropdownActive('officer/teachers') ? 'show' : '' }}" id="users">
+                        <div class="collapse {{ dropdownActive('officer/teachers') || dropdownActive('officer/students') ? 'show' : '' }}"
+                            id="users">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
                                     <a href="{{ route('officer.teachers.index') }}"
                                         class="nav-link {{ set_active('officer/teachers') }}">
                                         <i class="ni ni-single-02 text-yellow"></i>
                                         <span class="nav-link-text">Teachers</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('officer.students.index') }}"
+                                        class="nav-link {{ set_active('officer/students') }}">
+                                        <i class="ni ni-single-02 text-yellow"></i>
+                                        <span class="nav-link-text">Students</span>
                                     </a>
                                 </li>
                             </ul>

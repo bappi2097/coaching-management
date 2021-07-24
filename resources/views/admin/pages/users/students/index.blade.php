@@ -1,13 +1,13 @@
 @extends("admin.layouts.app")
-@section('breadcrumbs', Breadcrumbs::render('officer.teachers'))
+@section('breadcrumbs', Breadcrumbs::render('officer.students'))
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card">
                 <!-- Card header -->
                 <div class="card-header">
-                    <h3 class="mb-3">Teacher</h3>
-                    <a href="{{ route('officer.teachers.create') }}" class="btn btn-primary">Add Data</a>
+                    <h3 class="mb-3">Student</h3>
+                    <a href="{{ route('officer.students.create') }}" class="btn btn-primary">Add Data</a>
                 </div>
                 <div class="table-responsive py-4">
                     <table class="table table-flush" id="datatable-basic">
@@ -22,46 +22,46 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($teachers as $teacher)
+                            @foreach ($students as $student)
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="m-r-10 rounded-circle">
-                                                @empty($teacher->image)
-                                                    <a href="{{ route('officer.teachers.show', $teacher->id) }}"
-                                                        class="btn p-2 text-center rounded-circle btn-{{ randomColor($teacher->id) }}"
+                                                @empty($student->image)
+                                                    <a href="{{ route('officer.students.show', $student->id) }}"
+                                                        class="btn p-2 text-center rounded-circle btn-{{ randomColor($student->id) }}"
                                                         style="width: 40px;">
-                                                        {{ substr($teacher->fullName(), 0, 2) }}
+                                                        {{ substr($student->fullName(), 0, 2) }}
                                                     </a>
                                                 @else
-                                                    <a class="" href="{{ route('officer.teachers.show', $teacher->id) }}">
-                                                        <img src="{{ asset($teacher->image()) }}" alt="users"
+                                                    <a class="" href="{{ route('officer.students.show', $student->id) }}">
+                                                        <img src="{{ asset($student->image()) }}" alt="users"
                                                             class="rounded-circle" width="40" />
                                                     </a>
                                                 @endempty
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{ $teacher->fullName() }}</td>
-                                    <td>{{ $teacher->email }}</td>
+                                    <td>{{ $student->fullName() }}</td>
+                                    <td>{{ $student->email }}</td>
 
                                     <td class="d-flex justify-content-around">
 
-                                        <a href="{{ route('officer.teachers.show', $teacher->id) }}"
+                                        <a href="{{ route('officer.students.show', $student->id) }}"
                                             class="btn btn-sm btn-success text-white" title="show">
                                             <i class="far fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('officer.teachers.edit', $teacher->id) }}"
+                                        <a href="{{ route('officer.students.edit', $student->id) }}"
                                             class="btn btn-sm btn-info text-white" title="edit">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
-                                        <a href="{{ route('officer.teachers.destroy', $teacher->id) }}"
+                                        <a href="{{ route('officer.students.destroy', $student->id) }}"
                                             class="btn btn-sm btn-danger text-white" title="destroy"
-                                            onclick="event.preventDefault(); document.getElementById('destroy-item{{ $teacher->id }}').submit();">
+                                            onclick="event.preventDefault(); document.getElementById('destroy-item{{ $student->id }}').submit();">
                                             <i class="fas fa-trash-alt"></i>
                                         </a>
-                                        <form id="destroy-item{{ $teacher->id }}"
-                                            action="{{ route('officer.teachers.destroy', $teacher->id) }}" method="POST"
+                                        <form id="destroy-item{{ $student->id }}"
+                                            action="{{ route('officer.students.destroy', $student->id) }}" method="POST"
                                             class="d-none">
                                             @csrf
                                             @method('DELETE')

@@ -1,5 +1,4 @@
 @extends("admin.layouts.app")
-@section('breadcrumbs', Breadcrumbs::render('officer.teachers'))
 @section('content')
     <div class="row">
         <div class="col">
