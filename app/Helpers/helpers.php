@@ -74,6 +74,12 @@ if (!function_exists("dashboardURL")) {
         if (auth()->check()) {
             if (auth()->user()->hasRole('officer')) {
                 return route('officer.dashboard');
+            } else if (auth()->user()->hasRole('teacher')) {
+                return route('teacher.dashboard');
+            } else if (auth()->user()->hasRole('student')) {
+                return route('student.dashboard');
+            } else if (auth()->user()->hasRole('guardian')) {
+                return route('guardian.dashboard');
             } else {
                 return "/";
             }
