@@ -74,6 +74,33 @@ Route::group(["prefix" => "officer", "as" => "officer.", "middleware" => ["auth"
         Route::put("/{student}", [\App\Http\Controllers\Officer\EnrollCourseController::class, "update"])->name('update');
         Route::delete("/{student}", [\App\Http\Controllers\Officer\EnrollCourseController::class, "destroy"])->name('destroy');
     });
+    Route::group(["prefix" => "exam-types", "as" => "exam-types."], function () {
+        Route::get("/", [\App\Http\Controllers\Officer\ExamTypeController::class, "index"])->name('index');
+        Route::get("/create", [\App\Http\Controllers\Officer\ExamTypeController::class, "create"])->name('create');
+        Route::post("/", [\App\Http\Controllers\Officer\ExamTypeController::class, "store"])->name('store');
+        Route::get("/{examType}", [\App\Http\Controllers\Officer\ExamTypeController::class, "show"])->name('show');
+        Route::get("/{examType}/edit", [\App\Http\Controllers\Officer\ExamTypeController::class, "edit"])->name('edit');
+        Route::put("/{examType}", [\App\Http\Controllers\Officer\ExamTypeController::class, "update"])->name('update');
+        Route::delete("/{examType}", [\App\Http\Controllers\Officer\ExamTypeController::class, "destroy"])->name('destroy');
+    });
+    Route::group(["prefix" => "exams", "as" => "exams."], function () {
+        Route::get("/", [\App\Http\Controllers\Officer\ExamController::class, "index"])->name('index');
+        Route::get("/create", [\App\Http\Controllers\Officer\ExamController::class, "create"])->name('create');
+        Route::post("/", [\App\Http\Controllers\Officer\ExamController::class, "store"])->name('store');
+        Route::get("/{exam}", [\App\Http\Controllers\Officer\ExamController::class, "show"])->name('show');
+        Route::get("/{exam}/edit", [\App\Http\Controllers\Officer\ExamController::class, "edit"])->name('edit');
+        Route::put("/{exam}", [\App\Http\Controllers\Officer\ExamController::class, "update"])->name('update');
+        Route::delete("/{exam}", [\App\Http\Controllers\Officer\ExamController::class, "destroy"])->name('destroy');
+    });
+    Route::group(["prefix" => "results", "as" => "results."], function () {
+        Route::get("/", [\App\Http\Controllers\Officer\ResultController::class, "index"])->name('index');
+        Route::get("/create", [\App\Http\Controllers\Officer\ResultController::class, "create"])->name('create');
+        Route::post("/", [\App\Http\Controllers\Officer\ResultController::class, "store"])->name('store');
+        Route::get("/{result}", [\App\Http\Controllers\Officer\ResultController::class, "show"])->name('show');
+        Route::get("/{result}/edit", [\App\Http\Controllers\Officer\ResultController::class, "edit"])->name('edit');
+        Route::put("/{result}", [\App\Http\Controllers\Officer\ResultController::class, "update"])->name('update');
+        Route::delete("/{result}", [\App\Http\Controllers\Officer\ResultController::class, "destroy"])->name('destroy');
+    });
 });
 
 /* -------------------------------------------------------------------------- */

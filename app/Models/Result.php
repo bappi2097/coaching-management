@@ -25,8 +25,18 @@ class Result extends Model
      * 
      * @param \App\Models\User
      */
-    public function user()
+    public function student()
     {
         return $this->belongsTo(User::class, "user_id", 'id');
+    }
+
+    /**
+     * one to many relation with exam
+     * 
+     * @param \App\Models\Exam
+     */
+    public function exam()
+    {
+        return $this->belongsTo(Exam::class, "exam_id", 'id');
     }
 }

@@ -64,6 +64,27 @@
                             <span class="nav-link-text">Enroll Course</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ set_active('officer/exam-types') }}"
+                            href="{{ route('officer.exam-types.index') }}">
+                            <i class="fas fa-book"></i>
+                            <span class="nav-link-text">Exam Types</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ set_active('officer/exams') }}"
+                            href="{{ route('officer.exams.index') }}">
+                            <i class="fas fa-book"></i>
+                            <span class="nav-link-text">Exams</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ set_active('officer/results') }}"
+                            href="{{ route('officer.results.index') }}">
+                            <i class="fas fa-book"></i>
+                            <span class="nav-link-text">Results</span>
+                        </a>
+                    </li>
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">

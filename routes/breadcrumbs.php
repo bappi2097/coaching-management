@@ -111,3 +111,76 @@ Breadcrumbs::for('officer.enroll-courses.edit', function ($trail, $student) {
     $trail->parent('officer.enroll-courses');
     $trail->push('Edit', route('officer.enroll-courses.edit', $student));
 });
+
+// Dashboard > Exam Type
+Breadcrumbs::for('officer.exam-types', function ($trail) {
+    $trail->parent('officer.dashboard');
+    $trail->push('Exam Type', route('officer.exam-types.index'));
+});
+
+// Dashboard > Exam Type > Create
+Breadcrumbs::for('officer.exam-types.create', function ($trail) {
+    $trail->parent('officer.exam-types');
+    $trail->push('Create', route('officer.exam-types.create'));
+});
+
+// Dashboard > Exam Type > Show
+Breadcrumbs::for('officer.exam-types.show', function ($trail, $id) {
+    $trail->parent('officer.exam-types');
+    $trail->push('Show', route('officer.exam-types.show', $id));
+});
+
+// Dashboard > Exam Type > Edit
+Breadcrumbs::for('officer.exam-types.edit', function ($trail, $id) {
+    $trail->parent('officer.exam-types');
+    $trail->push('Edit', route('officer.exam-types.edit', $id));
+});
+
+// Dashboard > Exam
+Breadcrumbs::for('officer.exams', function ($trail) {
+    $trail->parent('officer.dashboard');
+    $trail->push('Exam', route('officer.exams.index'));
+});
+
+// Dashboard > Exam > Create
+Breadcrumbs::for('officer.exams.create', function ($trail) {
+    $trail->parent('officer.exams');
+    $trail->push('Create', route('officer.exams.create'));
+});
+
+// Dashboard > Exam > Show
+Breadcrumbs::for('officer.exams.show', function ($trail, $id) {
+    $trail->parent('officer.exams');
+    $trail->push('Show', route('officer.exams.show', $id));
+});
+
+// Dashboard > Exam > Edit
+Breadcrumbs::for('officer.exams.edit', function ($trail, $id) {
+    $trail->parent('officer.exams');
+    $trail->push('Edit', route('officer.exams.edit', $id));
+});
+
+
+// Dashboard > Result
+Breadcrumbs::for('officer.results', function ($trail) {
+    $trail->parent('officer.dashboard');
+    $trail->push('Result', route('officer.results.index'));
+});
+
+// Dashboard > Result > Create
+Breadcrumbs::for('officer.results.create', function ($trail) {
+    $trail->parent('officer.results');
+    $trail->push('Create', route('officer.results.create'));
+});
+
+// Dashboard > Result > Show
+Breadcrumbs::for('officer.results.show', function ($trail, $id) {
+    $trail->parent('officer.results');
+    $trail->push('Show', route('officer.results.show', $id));
+});
+
+// Dashboard > Result > Edit
+Breadcrumbs::for('officer.results.edit', function ($trail, $id) {
+    $trail->parent('officer.results');
+    $trail->push('Edit', route('officer.results.edit', $id));
+});

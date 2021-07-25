@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Officer;
 
-use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -98,7 +97,7 @@ class EnrollCourseController extends Controller
         $user_courses = User::find($request->user_id)->courses();
         $user_courses->sync($request->course_id);
         if ($user_courses->whereIn('course_id', $request->course_id)->exists()) {
-            Toastr::success('Successfully Enrolled', "Success");
+            Toastr::success('Successfully Enrolled Update', "Success");
         } else {
             Toastr::error('Something Went Wrong!', "Error");
         }
@@ -113,11 +112,11 @@ class EnrollCourseController extends Controller
      */
     public function destroy(User $student)
     {
-        if (Storage::exists($course->image)) {
-            Storage::delete($course->image);
+        if (Storage::exists($student->image)) {
+            Storage::delete($student->image);
         }
-        if ($course->delete()) {
-            Toastr::success('Successfully Course Deleted', "Success");
+        if ($student->delete()) {
+            Toastr::success('Successfully Enroll Course Deleted', "Success");
         } else {
             Toastr::error('Something Went Wrong!', "Error");
         }
