@@ -101,6 +101,11 @@ Route::group(["prefix" => "officer", "as" => "officer.", "middleware" => ["auth"
         Route::put("/{result}", [\App\Http\Controllers\Officer\ResultController::class, "update"])->name('update');
         Route::delete("/{result}", [\App\Http\Controllers\Officer\ResultController::class, "destroy"])->name('destroy');
     });
+
+    Route::group(["prefix" => "attendences", "as" => "attendences."], function () {
+        Route::get("/", [\App\Http\Controllers\Officer\AttendenceController::class, "index"])->name('index');
+        Route::post("/", [\App\Http\Controllers\Officer\AttendenceController::class, "store"])->name('store');
+    });
 });
 
 /* -------------------------------------------------------------------------- */

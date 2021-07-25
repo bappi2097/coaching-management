@@ -184,3 +184,9 @@ Breadcrumbs::for('officer.results.edit', function ($trail, $id) {
     $trail->parent('officer.results');
     $trail->push('Edit', route('officer.results.edit', $id));
 });
+
+// Dashboard > Attendence
+Breadcrumbs::for('officer.attendences', function ($trail) {
+    $trail->parent('officer.dashboard');
+    $trail->push('Attendence', route('officer.attendences.index'));
+});

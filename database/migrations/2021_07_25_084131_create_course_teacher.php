@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttendencesTable extends Migration
+class CreateCourseTeacher extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateAttendencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('attendences', function (Blueprint $table) {
+        Schema::create('course_teacher', function (Blueprint $table) {
             $table->id();
             $table->foreignId('course_id')->constrained('courses');
-            $table->foreignId('student_id')->constrained('users');
             $table->foreignId('teacher_id')->constrained('users');
-            $table->timestamp('attendence_date')->useCurrent();
-            $table->boolean('is_present')->default(false);
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateAttendencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attendences');
+        Schema::dropIfExists('course_teacher');
     }
 }

@@ -87,15 +87,16 @@ if (!function_exists("dashboardURL")) {
  *
  * @param  int $data1
  * @param  int|array $data2
- * @return string 'selected'|''
+ * @param  string $text
+ * @return string $text|''
  */
 if (!function_exists('selected')) {
-    function selected($data1, $data2): string
+    function selected($data1, $data2, $text = 'selected'): string
     {
         if (!is_array($data2)) {
-            return $data1 == $data2 ? 'selected' : '';
+            return $data1 == $data2 ? $text : '';
         } else {
-            return in_array($data1, $data2) ? 'selected' : '';
+            return in_array($data1, $data2) ? $text : '';
         }
     }
 }

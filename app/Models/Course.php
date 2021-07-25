@@ -56,4 +56,21 @@ class Course extends Model
     {
         return $this->hasMany(Exam::class, "course_id", 'id');
     }
+    public function assignTeachers()
+    {
+        return $this->belongsToMany(User::class, 'course_teacher', "teacher_id", "course_id")->withTimestamps();
+    }
+    public function attendences()
+    {
+        return $this->hasMany(Attendence::class, "course_id", "id");
+    }
+    /**
+     * one to many relation with Result
+     * 
+     * @param \App\Models\CourseFee
+     */
+    public function courseFees()
+    {
+        return $this->hasMany(CourseFee::class, "course_id", 'id');
+    }
 }

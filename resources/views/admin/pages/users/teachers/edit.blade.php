@@ -81,6 +81,24 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group @error('assign_course') has-danger @enderror">
+                                        <label class="form-control-label" for="assign_course">Assign Course</label>
+                                        <select type="assign_course" id="assign_course"
+                                            class="form-control @error('assign_course') is-invalid @enderror"
+                                            name="assign_course[]" multiple>
+                                            @foreach (\App\Models\Course::all() as $index => $course)
+                                                <option
+                                                    {{ selected($course->id, $teacher->assignCourses->pluck('id')->all()) }}
+                                                    value="{{ $course->id }}">
+                                                    {{ $index + 1 }} . {{ $course->title }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('assign_course')
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group text-right">

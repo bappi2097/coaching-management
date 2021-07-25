@@ -18,7 +18,7 @@ class TeacherController extends Controller
     public function index()
     {
         return view("admin.pages.users.teachers.index", [
-            "teachers" => User::role('teacher')->get()
+            "teachers" => User::with('assignCourses')->role('teacher')->get()
         ]);
     }
 
@@ -45,7 +45,9 @@ class TeacherController extends Controller
             "last_name" => "required|string|max:255",
             "email" => "required|email|unique:users,email",
             "image" => "nullable|file",
-            "password" => "required|confirmed|string|min:8"
+            "password" => "required|confirmed|string|min:8",
+            "assign_course" => "nullable|array",
+            "assign_course.*" => "nullable|exists:courses,id"
         ]);
         $data = [
             "first_name" => $request->first_name,
@@ -60,6 +62,7 @@ class TeacherController extends Controller
         $teacher = new User($data);
         if ($teacher->save()) {
             $teacher->assignRole("teacher");
+            $teacher->assignCourses()->sync($request->assign_course);
             Toastr::success('Successfully Teacher Added', "Success");
         } else {
             Toastr::error('Something Went Wrong!', "Error");
@@ -75,6 +78,7 @@ class TeacherController extends Controller
      */
     public function show(User $teacher)
     {
+        $teacher->loadMissing('assignCourses');
         return view("admin.pages.users.teachers.edit", compact('teacher'));
     }
 
@@ -86,6 +90,7 @@ class TeacherController extends Controller
      */
     public function edit(User $teacher)
     {
+        $teacher->loadMissing('assignCourses');
         return view("admin.pages.users.teachers.edit", compact('teacher'));
     }
 
@@ -102,7 +107,9 @@ class TeacherController extends Controller
             "first_name" => "required|string|max:255",
             "last_name" => "required|string|max:255",
             "email" => "required|email|unique:users,email," . $teacher->id,
-            "image" => "nullable|file"
+            "image" => "nullable|file",
+            "assign_course" => "nullable|array",
+            "assign_course.*" => "nullable|exists:courses,id"
         ]);
         $data = [
             "first_name" => $request->first_name,
@@ -115,6 +122,7 @@ class TeacherController extends Controller
             }
             $data['image'] = Storage::put("/images/teachers", $request->image);
         }
+        $teacher->assignCourses()->sync($request->assign_course);
         if ($teacher->update($data)) {
             Toastr::success('Successfully Teacher Updated', "Success");
         } else {

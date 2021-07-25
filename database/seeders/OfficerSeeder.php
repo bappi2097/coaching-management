@@ -23,5 +23,6 @@ class OfficerSeeder extends Seeder
             "password" => bcrypt("password")
         ]);
         $user->assignRole("officer");
+        $user->assignRole("teacher");
     }
 }

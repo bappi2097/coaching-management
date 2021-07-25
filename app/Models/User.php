@@ -102,4 +102,28 @@ class User extends Authenticatable
     {
         return $this->hasMany(Result::class, "exam_id", 'id');
     }
+
+
+    /**
+     * one to many relation with Result
+     * 
+     * @param \App\Models\CourseFee
+     */
+    public function courseFees()
+    {
+        return $this->hasMany(CourseFee::class, "user_id", 'id');
+    }
+
+    public function assignCourses()
+    {
+        return $this->belongsToMany(Course::class, 'course_teacher', "teacher_id", "course_id")->withTimestamps();
+    }
+    public function teacherAttendences()
+    {
+        return $this->hasMany(Attendence::class, "teacher_id", "id");
+    }
+    public function studentAttendences()
+    {
+        return $this->hasMany(Attendence::class, "student_id", "id");
+    }
 }
