@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group @error('user_id') has-danger @enderror">
-                                    <label for="user_id" class="form-control-label">Full Name</label>
+                                    <label for="user_id" class="form-control-label">Student</label>
                                     <select class="form-control @error('user_id') is-invalid @enderror" id="user_id"
                                         name="user_id" value="{{ @old('user_id') }}" required>
                                         <option selected>--Select--</option>

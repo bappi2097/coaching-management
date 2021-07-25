@@ -190,3 +190,28 @@ Breadcrumbs::for('officer.attendences', function ($trail) {
     $trail->parent('officer.dashboard');
     $trail->push('Attendence', route('officer.attendences.index'));
 });
+
+
+// Dashboard > Course Fee
+Breadcrumbs::for('officer.course-fees', function ($trail) {
+    $trail->parent('officer.dashboard');
+    $trail->push('Course Fee', route('officer.course-fees.index'));
+});
+
+// Dashboard > Course Fee > Create
+Breadcrumbs::for('officer.course-fees.create', function ($trail) {
+    $trail->parent('officer.course-fees');
+    $trail->push('Create', route('officer.course-fees.create'));
+});
+
+// Dashboard > Course Fee > Show
+Breadcrumbs::for('officer.course-fees.show', function ($trail, $id) {
+    $trail->parent('officer.course-fees');
+    $trail->push('Show', route('officer.course-fees.show', $id));
+});
+
+// Dashboard > Course Fee > Edit
+Breadcrumbs::for('officer.course-fees.edit', function ($trail, $id) {
+    $trail->parent('officer.course-fees');
+    $trail->push('Edit', route('officer.course-fees.edit', $id));
+});

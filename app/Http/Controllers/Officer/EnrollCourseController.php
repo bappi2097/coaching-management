@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
-use Illuminate\Support\Facades\Storage;
 
 class EnrollCourseController extends Controller
 {
@@ -66,7 +65,6 @@ class EnrollCourseController extends Controller
     {
         $student->loadMissing('courses');
         return view("admin.pages.enroll-courses.edit", compact('student'));
-        // return view("admin.pages.enroll-courses.show", compact('course'));
     }
 
     /**
@@ -112,9 +110,6 @@ class EnrollCourseController extends Controller
      */
     public function destroy(User $student)
     {
-        if (Storage::exists($student->image)) {
-            Storage::delete($student->image);
-        }
         if ($student->delete()) {
             Toastr::success('Successfully Enroll Course Deleted', "Success");
         } else {

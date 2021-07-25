@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Officer;
 
-use App\Http\Controllers\Controller;
 use App\Models\CourseFee;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CourseFeeController extends Controller
 {
@@ -15,7 +16,9 @@ class CourseFeeController extends Controller
      */
     public function index()
     {
-        //
+        return view("admin.pages.course-fees.index", [
+            "courseFees" => CourseFee::with(["student", 'course'])->get(),
+        ]);
     }
 
     /**
@@ -25,7 +28,7 @@ class CourseFeeController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.pages.course-fees.create");
     }
 
     /**
@@ -36,7 +39,20 @@ class CourseFeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            "user_id" => "required|exists:users,id",
+            "course_id" => "required|exists:courses,id",
+            "payment_date" => "required|date",
+            "payment_amount" => "required|numeric",
+            "transaction_id" => "required|string"
+        ]);
+        $courseFee = new CourseFee($data);
+        if ($courseFee->save()) {
+            Toastr::success('Successfully Course Fee Added', "Success");
+        } else {
+            Toastr::error('Something Went Wrong!', "Error");
+        }
+        return redirect()->route("officer.course-fees.index");
     }
 
     /**
@@ -47,7 +63,8 @@ class CourseFeeController extends Controller
      */
     public function show(CourseFee $courseFee)
     {
-        //
+        $courseFee->loadMissing(['course', 'student']);
+        return view("admin.pages.course-fees.edit", compact('courseFee'));
     }
 
     /**
@@ -58,7 +75,8 @@ class CourseFeeController extends Controller
      */
     public function edit(CourseFee $courseFee)
     {
-        //
+        $courseFee->loadMissing(['course', 'student']);
+        return view("admin.pages.course-fees.edit", compact('courseFee'));
     }
 
     /**
@@ -70,7 +88,19 @@ class CourseFeeController extends Controller
      */
     public function update(Request $request, CourseFee $courseFee)
     {
-        //
+        $data = $request->validate([
+            "user_id" => "required|exists:users,id",
+            "course_id" => "required|exists:courses,id",
+            "payment_date" => "required|date",
+            "payment_amount" => "required|numeric",
+            "transaction_id" => "required|string"
+        ]);
+        if ($courseFee->update($data)) {
+            Toastr::success('Successfully Course Fee Update', "Success");
+        } else {
+            Toastr::error('Something Went Wrong!', "Error");
+        }
+        return back();
     }
 
     /**
@@ -81,6 +111,11 @@ class CourseFeeController extends Controller
      */
     public function destroy(CourseFee $courseFee)
     {
-        //
+        if ($courseFee->delete()) {
+            Toastr::success('Successfully Course Fee Deleted', "Success");
+        } else {
+            Toastr::error('Something Went Wrong!', "Error");
+        }
+        return back();
     }
 }

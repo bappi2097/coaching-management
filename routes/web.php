@@ -102,6 +102,16 @@ Route::group(["prefix" => "officer", "as" => "officer.", "middleware" => ["auth"
         Route::delete("/{result}", [\App\Http\Controllers\Officer\ResultController::class, "destroy"])->name('destroy');
     });
 
+    Route::group(["prefix" => "course-fees", "as" => "course-fees."], function () {
+        Route::get("/", [\App\Http\Controllers\Officer\CourseFeeController::class, "index"])->name('index');
+        Route::get("/create", [\App\Http\Controllers\Officer\CourseFeeController::class, "create"])->name('create');
+        Route::post("/", [\App\Http\Controllers\Officer\CourseFeeController::class, "store"])->name('store');
+        Route::get("/{courseFee}", [\App\Http\Controllers\Officer\CourseFeeController::class, "show"])->name('show');
+        Route::get("/{courseFee}/edit", [\App\Http\Controllers\Officer\CourseFeeController::class, "edit"])->name('edit');
+        Route::put("/{courseFee}", [\App\Http\Controllers\Officer\CourseFeeController::class, "update"])->name('update');
+        Route::delete("/{courseFee}", [\App\Http\Controllers\Officer\CourseFeeController::class, "destroy"])->name('destroy');
+    });
+
     Route::group(["prefix" => "attendences", "as" => "attendences."], function () {
         Route::get("/", [\App\Http\Controllers\Officer\AttendenceController::class, "index"])->name('index');
         Route::post("/", [\App\Http\Controllers\Officer\AttendenceController::class, "store"])->name('store');

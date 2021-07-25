@@ -92,6 +92,13 @@
                             <span class="nav-link-text">Attendences</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ set_active('officer/course-fees') }}"
+                            href="{{ route('officer.course-fees.index') }}">
+                            <i class="fas fa-book"></i>
+                            <span class="nav-link-text">Course Fees</span>
+                        </a>
+                    </li>
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">
