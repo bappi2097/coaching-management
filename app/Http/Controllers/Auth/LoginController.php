@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Validation\ValidationException;
@@ -113,10 +114,20 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        return $this->guard()->attempt(
-            $this->credentials($request),
-            $request->filled('remember')
-        );
+        if ($request->guardian == "true") {
+            $credential = $this->credentials($request);
+            $user = User::where("email", $credential["email"])->first();
+            $credential["user_id"] = $user->id;
+            return $this->guard()->attempt(
+                $credential,
+                $request->filled('remember')
+            );
+        } else {
+            return $this->guard()->attempt(
+                $this->credentials($request),
+                $request->filled('remember')
+            );
+        }
     }
 
     /**
@@ -230,5 +241,10 @@ class LoginController extends Controller
     public function redirectPath()
     {
         return dashboardURL();
+    }
+
+    public function showGuardianLoginForm()
+    {
+        return view('guardian.auth.login');
     }
 }

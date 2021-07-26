@@ -7,7 +7,7 @@
                 <!-- Card header -->
                 <div class="card-header">
                     <h3 class="mb-3">Student</h3>
-                    <a href="{{ route('teacher.students.create') }}" class="btn btn-primary">Add Data</a>
+                    {{-- <a href="{{ route('teacher.students.create') }}" class="btn btn-primary">Add Data</a> --}}
                 </div>
                 <div class="table-responsive py-4">
                     <table class="table table-flush" id="datatable-basic">
@@ -51,7 +51,7 @@
                                             class="btn btn-sm btn-success text-white" title="show">
                                             <i class="far fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('teacher.students.edit', $student->id) }}"
+                                        {{-- <a href="{{ route('teacher.students.edit', $student->id) }}"
                                             class="btn btn-sm btn-info text-white" title="edit">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -65,7 +65,7 @@
                                             class="d-none">
                                             @csrf
                                             @method('DELETE')
-                                        </form>
+                                        </form> --}}
                                     </td>
                                 </tr>
                             @endforeach

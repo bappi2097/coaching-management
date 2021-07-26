@@ -17,7 +17,7 @@ class EnrollCourseController extends Controller
     public function index()
     {
         return view("guardian.pages.enroll-courses.index", [
-            "students" => User::role('student')->with('courses')->get()->filter(function ($user) {
+            "students" => User::role('student')->with('courses')->where("id", auth()->user()->user_id)->get()->filter(function ($user) {
                 return $user->courses()->exists();
             }),
         ]);

@@ -17,7 +17,7 @@ class ResultController extends Controller
     public function index()
     {
         return view("guardian.pages.results.index", [
-            "results" => Result::with(['student', 'exam', 'exam.examType'])->get(),
+            "results" => Result::with(['student', 'exam', 'exam.examType'])->where("user_id", auth()->user()->user_id)->get(),
         ]);
     }
 

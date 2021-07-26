@@ -50,6 +50,7 @@
                         </div>
                         <form method="POST" action="{{ url('login') }}" role="form">
                             @csrf
+                            <input type="hidden" name="guardian" value="true">
                             <div class="form-group mb-3 @error('email') has-danger @enderror">
                                 <div class="input-group input-group-merge input-group-alternative">
                                     <div class="input-group-prepend">

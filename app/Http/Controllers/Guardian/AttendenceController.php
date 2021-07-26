@@ -16,16 +16,9 @@ class AttendenceController extends Controller
      */
     public function index()
     {
-        if (request()->course_id) {
-            return view("guardian.pages.attendences.index", [
-                "course" => Course::with(['users'])->find(request()->course_id),
-                "data" => request()->all(),
-                "attedence_ids" => Attendence::where(
-                    ["course_id" => request()->course_id, "teacher_id" => auth()->user()->id, "attendence_date" => request()->attendence_date, "is_present" => true]
-                )->pluck('student_id')->all(),
-            ]);
-        }
-        return view("guardian.pages.attendences.index");
+        return view("guardian.pages.attendences.index", [
+            "attedences" => Attendence::with(["student", "course"])->where("student_id", auth()->user()->user_id)->get(),
+        ]);
     }
 
     /**

@@ -7,7 +7,7 @@
                 <!-- Card header -->
                 <div class="card-header">
                     <h3 class="mb-3">Result</h3>
-                    <a href="{{ route('student.results.create') }}" class="btn btn-primary">Add Data</a>
+                    {{-- <a href="{{ route('student.results.create') }}" class="btn btn-primary">Add Data</a> --}}
                 </div>
                 <div class="table-responsive py-4">
                     <table class="table table-flush" id="datatable-basic">
@@ -19,7 +19,7 @@
                                 <th class="border-top-0">Exam</th>
                                 <th class="border-top-0">Date</th>
                                 <th class="border-top-0">Marks</th>
-                                <th class="border-top-0">Action</th>
+                                {{-- <th class="border-top-0">Action</th> --}}
                             </tr>
                             </tr>
                         </thead>
@@ -49,7 +49,7 @@
                                     <td>{{ $result->exam->examType->name }}</td>
                                     <td>{{ date('F j, Y, g:i a', strtotime($result->exam->exam_date)) }}</td>
                                     <td>{{ $result->marks }}</td>
-                                    <td class="d-flex justify-content-around">
+                                    {{-- <td class="d-flex justify-content-around">
                                         <a href="{{ route('student.results.show', $result->id) }}"
                                             class="btn btn-sm btn-success text-white" title="show">
                                             <i class="far fa-eye"></i>
@@ -69,7 +69,7 @@
                                             @csrf
                                             @method('DELETE')
                                         </form>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

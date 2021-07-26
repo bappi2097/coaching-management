@@ -15,12 +15,12 @@
                             <tr>
                             <tr class="bg-light">
                                 <th class="border-top-0">User</th>
-                                <th class="border-top-0">Email</th>
+                                {{-- <th class="border-top-0">Email</th> --}}
                                 <th class="border-top-0">Coourse</th>
                                 <th class="border-top-0">Transaction</th>
                                 <th class="border-top-0">Payment</th>
                                 <th class="border-top-0">Month</th>
-                                <th class="border-top-0">Action</th>
+                                {{-- <th class="border-top-0">Action</th> --}}
                             </tr>
                             </tr>
                         </thead>
@@ -31,29 +31,26 @@
                                         <div class="d-flex align-items-center">
                                             <div class="m-r-10 rounded-circle">
                                                 @empty($courseFee->student->image)
-                                                    <a href="{{ route('student.course-fees.show', $courseFee->student->id) }}"
+                                                    <span
                                                         class="btn p-2 text-center rounded-circle btn-{{ randomColor($courseFee->student->id) }}"
                                                         style="width: 40px;">
                                                         {{ substr($courseFee->student->fullName(), 0, 2) }}
-                                                    </a>
+                                                    </span>
                                                 @else
-                                                    <a class=""
-                                                        href="{{ route('student.course-fees.show', $courseFee->student->id) }}">
-                                                        <img src="{{ asset($courseFee->student->image()) }}" alt="users"
-                                                            class="rounded-circle" width="40" />
-                                                    </a>
+                                                    <img src="{{ asset($courseFee->student->image()) }}" alt="users"
+                                                        class="rounded-circle" width="40" />
                                                 @endempty
                                             </div>
                                             {{ $courseFee->student->fullName() }}
                                         </div>
                                     </td>
-                                    <td>{{ $courseFee->student->email }}</td>
+                                    {{-- <td>{{ $courseFee->student->email }}</td> --}}
                                     <td>{{ $courseFee->course->title }}</td>
                                     <td>{{ $courseFee->transaction_id }}</td>
                                     <td>{{ $courseFee->payment_amount }} / {{ $courseFee->course->course_fee }}</td>
 
                                     <td>{{ date('M Y', strtotime($courseFee->payment_date)) }}</td>
-                                    <td class="d-flex justify-content-around">
+                                    {{-- <td class="d-flex justify-content-around">
 
                                         <a href="{{ route('student.course-fees.show', $courseFee->id) }}"
                                             class="btn btn-sm btn-success text-white" title="show">
@@ -74,7 +71,7 @@
                                             @csrf
                                             @method('DELETE')
                                         </form>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

@@ -30,6 +30,17 @@
                         <h1 class="text-white">Welcome!</h1>
                     </div>
                 </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="card">
+                            {{-- <div class="card-body"> --}}
+                            <a href="{{ route('guardian-login') }}" class="card-body btn btn-danger">
+                                <span class="nav-link-inner--text">Guardian Login &#8594;</span>
+                            </a>
+                            {{-- </div> --}}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="separator separator-bottom separator-skew zindex-100">

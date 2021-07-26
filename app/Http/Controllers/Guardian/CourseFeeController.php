@@ -17,7 +17,7 @@ class CourseFeeController extends Controller
     public function index()
     {
         return view("guardian.pages.course-fees.index", [
-            "courseFees" => CourseFee::with(["student", 'course'])->get(),
+            "courseFees" => CourseFee::with(["student", 'course'])->where("user_id", auth()->user()->user_id)->get(),
         ]);
     }
 

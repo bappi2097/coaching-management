@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Guardian;
 use App\Models\Exam;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 
 class ExamController extends Controller
@@ -17,7 +18,7 @@ class ExamController extends Controller
     public function index()
     {
         return view("guardian.pages.exams.index", [
-            "exams" => Exam::with(['course', 'examType'])->get(),
+            "exams" => Exam::with(['course', 'examType'])->whereIn("course_id", User::find(auth()->user()->user_id)->courses->pluck("id")->all())->get(),
         ]);
     }
 

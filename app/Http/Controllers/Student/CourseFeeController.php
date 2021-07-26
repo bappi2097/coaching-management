@@ -17,7 +17,7 @@ class CourseFeeController extends Controller
     public function index()
     {
         return view("student.pages.course-fees.index", [
-            "courseFees" => CourseFee::with(["student", 'course'])->get(),
+            "courseFees" => CourseFee::with(["student", 'course'])->where("user_id", auth()->user()->id)->get(),
         ]);
     }
 
@@ -40,19 +40,19 @@ class CourseFeeController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            "user_id" => "required|exists:users,id",
             "course_id" => "required|exists:courses,id",
             "payment_date" => "required|date",
             "payment_amount" => "required|numeric",
             "transaction_id" => "required|string"
         ]);
+        $data["user_id"] = auth()->user()->id;
         $courseFee = new CourseFee($data);
         if ($courseFee->save()) {
             Toastr::success('Successfully Course Fee Added', "Success");
         } else {
             Toastr::error('Something Went Wrong!', "Error");
         }
-        return redirect()->route("officer.course-fees.index");
+        return redirect()->route("student.course-fees.index");
     }
 
     /**
@@ -89,12 +89,12 @@ class CourseFeeController extends Controller
     public function update(Request $request, CourseFee $courseFee)
     {
         $data = $request->validate([
-            "user_id" => "required|exists:users,id",
             "course_id" => "required|exists:courses,id",
             "payment_date" => "required|date",
             "payment_amount" => "required|numeric",
             "transaction_id" => "required|string"
         ]);
+        $data["user_id"] = auth()->user()->id;
         if ($courseFee->update($data)) {
             Toastr::success('Successfully Course Fee Update', "Success");
         } else {

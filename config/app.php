@@ -179,6 +179,7 @@ return [
         /*                            Third Party Provider                            */
         /* -------------------------------------------------------------------------- */
         Brian2694\Toastr\ToastrServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
     ],
 
     /*

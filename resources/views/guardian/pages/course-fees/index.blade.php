@@ -7,7 +7,7 @@
                 <!-- Card header -->
                 <div class="card-header">
                     <h3 class="mb-3">Course Fee</h3>
-                    <a href="{{ route('guardian.course-fees.create') }}" class="btn btn-primary">Add Data</a>
+                    {{-- <a href="{{ route('guardian.course-fees.create') }}" class="btn btn-primary">Add Data</a> --}}
                 </div>
                 <div class="table-responsive py-4">
                     <table class="table table-flush" id="datatable-basic">
@@ -20,7 +20,7 @@
                                 <th class="border-top-0">Transaction</th>
                                 <th class="border-top-0">Payment</th>
                                 <th class="border-top-0">Month</th>
-                                <th class="border-top-0">Action</th>
+                                {{-- <th class="border-top-0">Action</th> --}}
                             </tr>
                             </tr>
                         </thead>
@@ -31,17 +31,16 @@
                                         <div class="d-flex align-items-center">
                                             <div class="m-r-10 rounded-circle">
                                                 @empty($courseFee->student->image)
-                                                    <a href="{{ route('guardian.course-fees.show', $courseFee->student->id) }}"
+                                                    <span
                                                         class="btn p-2 text-center rounded-circle btn-{{ randomColor($courseFee->student->id) }}"
                                                         style="width: 40px;">
                                                         {{ substr($courseFee->student->fullName(), 0, 2) }}
-                                                    </a>
+                                                    </span>
                                                 @else
-                                                    <a class=""
-                                                        href="{{ route('guardian.course-fees.show', $courseFee->student->id) }}">
+                                                    <span>
                                                         <img src="{{ asset($courseFee->student->image()) }}" alt="users"
                                                             class="rounded-circle" width="40" />
-                                                    </a>
+                                                    </span>
                                                 @endempty
                                             </div>
                                             {{ $courseFee->student->fullName() }}
@@ -53,7 +52,7 @@
                                     <td>{{ $courseFee->payment_amount }} / {{ $courseFee->course->course_fee }}</td>
 
                                     <td>{{ date('M Y', strtotime($courseFee->payment_date)) }}</td>
-                                    <td class="d-flex justify-content-around">
+                                    {{-- <td class="d-flex justify-content-around">
 
                                         <a href="{{ route('guardian.course-fees.show', $courseFee->id) }}"
                                             class="btn btn-sm btn-success text-white" title="show">
@@ -74,7 +73,7 @@
                                             @csrf
                                             @method('DELETE')
                                         </form>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

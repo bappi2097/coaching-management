@@ -18,12 +18,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="examples/icons.html">
-                            <i class="ni ni-planet text-orange"></i>
-                            <span class="nav-link-text">Icons</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#users" data-toggle="collapse" role="button"
                             aria-expanded="{{ dropdownActive('officer/teachers') ? 'true' : 'false' }}"
                             aria-controls="users">
@@ -97,6 +91,12 @@
                             href="{{ route('officer.course-fees.index') }}">
                             <i class="fas fa-book"></i>
                             <span class="nav-link-text">Course Fees</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('officer/logs') }}" target="_blank">
+                            <i class="fas fa-book"></i>
+                            <span class="nav-link-text">Error Log</span>
                         </a>
                     </li>
                 </ul>

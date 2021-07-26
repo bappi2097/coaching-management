@@ -17,7 +17,7 @@ class ExamController extends Controller
     public function index()
     {
         return view("teacher.pages.exams.index", [
-            "exams" => Exam::with(['course', 'examType'])->get(),
+            "exams" => Exam::with(['course', 'examType'])->whereIn("course_id", auth()->user()->assignCourses->pluck("id")->all())->get(),
         ]);
     }
 
