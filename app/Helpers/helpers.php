@@ -212,3 +212,15 @@ if (!function_exists('randomColor')) {
         return $class[$id % 5] ?? '';
     }
 }
+
+if (!function_exists('courseFeesStatusClass')) {
+    function courseFeesStatusClass($text)
+    {
+        $class = [
+            "pending" => "info",
+            "accepted" => "success",
+            "rejected" => "danger"
+        ];
+        return $class[$text] ?? 'light';
+    }
+}

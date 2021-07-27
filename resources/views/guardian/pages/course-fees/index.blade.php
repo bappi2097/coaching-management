@@ -20,6 +20,7 @@
                                 <th class="border-top-0">Transaction</th>
                                 <th class="border-top-0">Payment</th>
                                 <th class="border-top-0">Month</th>
+                                <th class="border-top-0">Status</th>
                                 {{-- <th class="border-top-0">Action</th> --}}
                             </tr>
                             </tr>
@@ -52,6 +53,8 @@
                                     <td>{{ $courseFee->payment_amount }} / {{ $courseFee->course->course_fee }}</td>
 
                                     <td>{{ date('M Y', strtotime($courseFee->payment_date)) }}</td>
+                                    <td class="badge badge-{{ courseFeesStatusClass($courseFee->status) }}">
+                                        {{ Str::upper($courseFee->status) }}</td>
                                     {{-- <td class="d-flex justify-content-around">
 
                                         <a href="{{ route('guardian.course-fees.show', $courseFee->id) }}"
