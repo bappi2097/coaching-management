@@ -57,9 +57,9 @@
                             @enderror
                         </div>
                         <div class="form-group @error('exam_date') has-danger @enderror">
-                            <label for="exma_date" class="form-control-label">Exam Datetime</label>
+                            <label for="exam_date" class="form-control-label">Exam Datetime</label>
                             <input class="form-control @error('exam_date') is-invalid @enderror" type="datetime-local"
-                                value="{{ @old('exam_date') }}" name="exam_date" id="exma_date">
+                                value="{{ @old('exam_date') }}" name="exam_date" id="exam_date">
                             @error('exam_date')
                                 <span class="invalid-feedback" role="alert">{{ $message }}</span>
                             @enderror

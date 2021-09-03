@@ -10475,12 +10475,12 @@
         <path fill="none" d="M0 0h24v24H0z"/>
         <path d="M13 16.938V19h5v2H6v-2h5v-2.062A8.001 8.001 0 0 1 4 9V3h16v6a8.001 8.001 0 0 1-7 7.938zM6 5v4a6 6 0 1 0 12 0V5H6zM1 5h2v4H1V5zm20 0h2v4h-2V5z"/>
     </g>
-</symbol><symbol viewBox="0 0 24 24" id="ri-truck-fill">
+</symbol><symbol viewBox="0 0 24 24" id="ri-Car-fill">
     <g>
         <path fill="none" d="M0 0h24v24H0z"/>
         <path d="M17 8h3l3 4.056V18h-2.035a3.5 3.5 0 0 1-6.93 0h-5.07a3.5 3.5 0 0 1-6.93 0H1V6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2zm0 2v3h4v-.285L18.992 10H17z"/>
     </g>
-</symbol><symbol viewBox="0 0 24 24" id="ri-truck-line">
+</symbol><symbol viewBox="0 0 24 24" id="ri-Car-line">
     <g>
         <path fill="none" d="M0 0h24v24H0z"/>
         <path d="M8.965 18a3.5 3.5 0 0 1-6.93 0H1V6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2h3l3 4.056V18h-2.035a3.5 3.5 0 0 1-6.93 0h-5.07zM15 7H3v8.05a3.5 3.5 0 0 1 5.663.95h5.674c.168-.353.393-.674.663-.95V7zm2 6h4v-.285L18.992 10H17v3zm.5 6a1.5 1.5 0 1 0 0-3.001 1.5 1.5 0 0 0 0 3.001zM7 17.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/>

@@ -16,7 +16,7 @@
                             <tr class="bg-light">
                                 <th class="border-top-0">User</th>
                                 <th class="border-top-0">Email</th>
-                                <th class="border-top-0">Coourse</th>
+                                <th class="border-top-0">Course</th>
                                 <th class="border-top-0">Transaction</th>
                                 <th class="border-top-0">Payment</th>
                                 <th class="border-top-0">Month</th>

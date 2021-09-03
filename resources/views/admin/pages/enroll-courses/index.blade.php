@@ -17,7 +17,7 @@
                                 <th class="border-top-0">User</th>
                                 <th class="border-top-0">Name</th>
                                 <th class="border-top-0">Email</th>
-                                <th class="border-top-0">Enroll Coourse</th>
+                                <th class="border-top-0">Enroll Course</th>
                                 <th class="border-top-0">Action</th>
                             </tr>
                             </tr>
